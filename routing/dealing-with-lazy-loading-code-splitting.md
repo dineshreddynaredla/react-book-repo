@@ -38,7 +38,9 @@ We can use the `import` function to help us import a component when we need it a
 import('./Home')
 ```
 
-Here is the thing though. This returns a `Promise`. Not only thst, it's not a valid React child so we need to stick it into a component. For that reason we write a component whose job it is to retrieve the result and ensure we render out our fetched component, like so:
+Though this isn't quite enough.
+
+Why? This returns a `Promise`. Not only that, it's not a valid React child so we need to stick it into a component. For that reason we write a component whose job it is to retrieve the result and ensure we render out our fetched component, like so:
 
 ```js
 class Async extends React.Component {
