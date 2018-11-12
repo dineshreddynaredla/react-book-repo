@@ -15,19 +15,13 @@ The official documentation can be found at, [https://reactjs.org/](https://react
 Questions or comments, you can reach me on twitter:  
 @chris\_noring
 
-
-
 ## Credits
 
 * Than you to the React team at Facebook for all your efforts in creating React
 
-* Thank you @John\_Papa for your PRs and suggestions and making this community book better
-
-
+* Thank you [John Papa](https://twitter.com/John_Papa) for your PRs and suggestions and making this community book better
 
 This will always be a free resource
-
-
 
 Happy reading  
 Chris
