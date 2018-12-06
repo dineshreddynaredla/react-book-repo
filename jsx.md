@@ -42,7 +42,7 @@ Above we can see that our attribute `title` is now part of the second argument.
 
 ## Multiline
 
-Most o the time you will define JSX over several different rows and starting out new it might stump you why it doesn't work. Yopu simply need to wrap it in a parenthesis, like so:
+Most o the time you will define JSX over several different rows and starting out new it might stump you why it doesn't work. You simply need to wrap it in a parenthesis, like so:
 
 ```jsx
 const Elem = 
