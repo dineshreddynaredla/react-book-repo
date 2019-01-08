@@ -1,10 +1,22 @@
 # React testing library
+React Testing Library is a different testing library in that it tests the surface of your component rather than the internals. You can change your components as much as you want as long as they render the data the same way or React in the same way if you fill in data or press a button for example.
+![](/assets/board-chalk-chalkboard-459793.jpg)
+
+
+This is what the author the library Kent Dodds says about it:
 
 > Simple and complete React DOM testing utilities that encourage good testing practices
 
 It's a lightweight solution for testing React components. It provides utility functions on top of `react-dom` and `react-dom/utils`. Your tests work on DOM nodes over React component instances.
 
-It's easy to get started with you just need to install `react-testing-library`:
+In this article we will cover the following:
+-  **writing a test**, show how simple it is to write a test, instantiate a component and assert on it
+- **dealing with events**, we will learn how we can trigger event and assert on the resulting component afterwards
+- **asynchronous actions**, we will learn how we can trigger and wait for asynchronous actions to finish
+- **manage input**, we will learn how to send key strokes to input elements on our components and assert on the result
+
+
+It's easy to get started with, you just need to install `react-testing-library`:
 
 ```
 yarn add react-testing-library
@@ -344,8 +356,12 @@ describe('Note', () => {
 
 Above we see the construct `await wait(() => getByTestId('data'))` that halts until the element is present. Thereafter we assert on the result.
 
-## Further reading
+## Summary
+We had a look at the library itself and wrote a few tests. We learned how to deal with events, asynchronous actions as well as how to manage input. We covered most things this library has to offer but more importantly we learned how to think about testing in a different way.
 
+> Maybe we don't have to test the internals but rather the surface of our components?
+
+### Further reading
 There is a lot more to this library and you are encouraged to look at the
 
 Official documentation at:  
