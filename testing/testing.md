@@ -1,4 +1,13 @@
 # Jest
+In this article we will cover the testing framework Jest. We will learn how to:
+- **write tests**, it's a breeze to write tests and assert on specific conditions
+- **manage our test suite**, by running specific tests as well as specific test files by utilising the pattern matching functionality
+- debug our tests, by augmenting VS Code we can gain the ability to set break points in our tests and create a real nice debugging experience
+- **snapshot mastery**, learn how using snapshots can give you increased confidence that your components are still working after a change you made
+- **leverage mocking**, mocking dependencies can ensure you only test what you want to test and Jest has great defaults when it comes to mocking
+- **coverage reports**, we have come to expect a good coverage tool to be included in all good testing libraries. Jest is no different and it's really easy to run coverage reports and quickly find what parts of your code that could benefit from some more testing 
+
+
 Jest sells itself by saying it's 
 > Delightful JavaScript testing
 
