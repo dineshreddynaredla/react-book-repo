@@ -435,3 +435,17 @@ describe('add', () => {
 Our second case should now cover for the execution path that leads to an exception being thrown. Let's rerun our coverage report:
 
 ![](/assets/Screen Shot 2018-06-01 at 17.38.01.png)
+
+## Summary
+We've looked at how to write tests. We've also looked at how to debug our tests using an extension from VS Code which have allowed us to set breakpoints.
+
+Furthermore we've learned what snapshots are and how to best use them to our advantage.
+
+Next up we've been looking at leveraging mocking to ensure we are in complete isolation when we test.
+
+Lastly we've looked at how we can generate coverage reports and how that can help you to track down parts of your code that could really benefit from some more testing.
+
+### Further reading
+The official docs for Jest can be found here [Official docs](https://jestjs.io/docs/en/tutorial-react)
+
+
