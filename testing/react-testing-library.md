@@ -1,6 +1,6 @@
 # Testing the component surface with React testing library
 `React Testing Library` is a different testing library in that it tests the surface of your component rather than the internals. You can change your components as much as you want as long as they render the data the same way or React in the same way if you fill in data or press a button for example.
-![](/assets/board-chalk-chalkboard-459793.jpg)
+![](/assets/board-chalk-chalkboard-459793.jpg) 
 
 
 This is what the author the library Kent Dodds says about it:
