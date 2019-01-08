@@ -7,6 +7,8 @@ In this article we will cover the testing framework Jest. We will learn how to:
 - **leverage mocking**, mocking dependencies can ensure you only test what you want to test and Jest has great defaults when it comes to mocking
 - **coverage reports**, we have come to expect a good coverage tool to be included in all good testing libraries. Jest is no different and it's really easy to run coverage reports and quickly find what parts of your code that could benefit from some more testing 
 
+![](/assets/card-game-cards-gamble-1007523.jpg)
+
 
 Jest sells itself by saying it's 
 > Delightful JavaScript testing
