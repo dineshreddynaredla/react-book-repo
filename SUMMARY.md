@@ -50,7 +50,7 @@
 * [Nock](testing/nock.md)
 * [Enzyme](testing/enzyme.md)
 * [react-testing-library](testing/react-testing-library.md)
-* cypress
+* [cypress](testing/cypress.md)
 
 ## REDUX
 

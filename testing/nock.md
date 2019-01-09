@@ -1,11 +1,17 @@
-# Nock
-Nock is used to mock calls to HTTP. It makes it possible for us to specify what urls to listen to and what to respond with.
+# Mocking HTTP calls with Nock
+Nock is used to mock calls to HTTP. It makes it possible for us to specify what URLs to listen to and what to respond with. This is a fairly short article that shows how you use the library `nock`. 
+
+
+In this article we will cover:
+- **set up**, setting up a `nock` and specify a mock response
+- **query parameters**, see how we can set up our `nock` with query parameters
+- **verification**, we should always verify that our `nocks` where hit. If they weren't then something changed and we need to change our tests to reflect that 
 
 ## Scenario
 Imagine we have the following files:
 
-- products.js, a service that can retrieve data for us
-- ProductsList.js, a component that calls a method on products.js to get data and render that
+- **products.js**, a service that can retrieve data for us
+- **ProductsList.js**, a component that calls a method on products.js to get data and render that
 
 Let's have a look at what these two modules look like:
 
@@ -100,6 +106,7 @@ That works but let's look at how to solve it with `nock`. Because we are attempt
 
  ```js
  // setupTests.js
+ 
 global.fetch = require('node-fetch');
  ``` 
  
@@ -192,6 +199,8 @@ nock.disableNetConnect();
 ```
 
 ## Summary
+We have briefly explained what `nock` is and how to use it for different cases. This is just one way of many to handle HTTP calls. 
+
 There are a lot more you can do with `nock`, we have barely scraped the surface. Have a look at the official documentation [Nock documentation](https://www.npmjs.com/package/nock)
 
 
