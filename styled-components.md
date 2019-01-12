@@ -1,9 +1,16 @@
 # Styled components
 
-Styled components is an awesome library to enable you to:
+There are a ton of ways to style components in React. This is probably my favourite way of doing it and it differs somewhat conceptually from other ways.
 
-* create reusable styles
-* enables you to write actual CSS in your javascript
+It's using a library called `styled-components` that you can easily install via NPM.
+
+![](/assets/blurred-background-board-chips-1432669.jpg)
+
+
+The library enables you to:
+
+* **create** reusable styles
+* **write** actual CSS in your JavaScript
 
 and much much more.
 
@@ -27,7 +34,7 @@ Now to use it we need to use backticks \`, like so:
 
     const Button = styled.button``;
 
-As we can see above we call styled.nameOfElement\`\` to define a style for our element. Let's add some style to it:
+As we can see above we call `styled.nameOfElement` to define a style for our element. Let's add some style to it:
 
 ```css
 const Button = styled.button`
@@ -87,7 +94,7 @@ Let's zoom in on the needed addition:
       color: white;
     `}
 
-by using `${props}` we are able to write code that checks the attributes of the element, `props` wether they contain the property `primary`. Thereafter we use `&& css` to specify what additional CSS we should be adding if the condition is met. A note here is that we need to import the `css` function from styled components like so:
+by using `${props}` we are able to write code that checks the attributes of the element, `props` wether they contain the property `primary`. Thereafter we use `&& css` to specify what additional CSS we should be adding if the condition is met. A note here is that we need to import the `css` function from `styled-components` like so:
 
 ```
 import styled, { css } from 'styled-components';
@@ -162,7 +169,7 @@ Now to style this one we need to use the styled function in a little different w
 
     <DecoratedText text={"I am now decorated"} />
 
-In the component we need to take the className as a parameter in the props and assign that to our top level div, like so:
+In the component we need to take the `className` as a parameter in the `props` and assign that to our top level div, like so:
 
 ```
 // Text.js
@@ -181,7 +188,7 @@ Text.propTypes = {
 export default Text;
 ```
 
-As you can see above calling the styled\(\) function means that it under the hood produces a className that it injects into our component that we need to set to our top level element, for it to take effect.
+As you can see above calling the `styled()` function means that it under the hood produces a className that it injects into our component that we need to set to our top level element, for it to take effect.
 
 ## Inheritance
 
@@ -193,7 +200,9 @@ We can easily take an existing  style and add to it by using the method extend, 
 
 ## Change styled components
 
-In some cases you might want to apply the style intended for a specific type of element have that applied to another type of element. A common example is button.You might like all the styling a specific button comes with but you might want to apply that on an anchor element instead. Using the withComponent\(\) method allows you to do just that:
+In some cases you might want to apply the style intended for a specific type of element and have that applied to another type of element. A common example is a button.You might like all the styling a specific button comes with but you might want to apply that on an anchor element instead. Using the `withComponent()` method allows you to do just that:
+
+TODO add LinkButton styling for clarity
 
 ```
 const LinkButton = Button.withComponent('a');
@@ -203,7 +212,7 @@ The end result of the above operation is a link tag with all the styling of a Bu
 
 ## Using the attribute function
 
-Sometimes all you need is just to change a small thing in the component styling. For that the attrs\(\) function allows you to add a property with a value. Let's illustrate how we can add this:
+Sometimes all you need is just to change a small thing in the component styling. For that the `attrs()` function allows you to add a property with a value. Let's illustrate how we can add this:
 
     const FramedText = styled(Text).attrs({ title: 'framed' })`
       border: solid 2px black;
@@ -212,7 +221,7 @@ Sometimes all you need is just to change a small thing in the component styling.
       padding: 30px;
     `;
 
-Above we have chained styled\(\) and attrs\(\) and we end with a double \` tick. Another example is:
+Above we have chained `styled()` and `attrs()` and we end with a double \` tick. Another example is:
 
     const Button = styled.button.attrs({ title: 'titled' })`
       background: black;
@@ -238,16 +247,16 @@ Above we have chained styled\(\) and attrs\(\) and we end with a double \` tick.
 
 ## Theming
 
-Styled components exports a ThemeProvider that allows us to easily theme our styled components. To make it work we need to do the following:
+Styled components exports a `ThemeProvider` that allows us to easily theme our styled components. To make it work we need to do the following:
 
-* import the ThemeProvider
-* set it as root Element of the App
-* define a theme
-* refer to a property in theme and set that to desired CSS property
+* **import** the ThemeProvider
+* **set it as root** Element of the App
+* **define** a theme
+* **refer to a property in theme** and set that to desired CSS property
 
 ### Set up
 
-In the component where we intend to use a Theme we need to import and declare a ThemeProvider. Now this can be either the root element of the entire app or the component you are in. ThemProvider will inject a theme property inside of either all components or from the component you add it to and all its children. Let's look at how to add it globally:
+In the component where we intend to use a _Theme_ we need to import and declare a `ThemeProvider`. Now this can be either the root element of the entire app or the component you are in. `ThemeProvider` will inject a `theme` property inside of either all components or from the component you add it to and all its children. Let's look at how to add it globally:
 
 ```
 ReactDOM.render(
@@ -295,7 +304,7 @@ As you can see we are able to access the themes property by writing `props.theme
 
 ### Theme as a higher order component factory
 
-If we want to use the theme inside of a component we can do so but we need to use a helper called withTheme\(\). It takes a component and the theme property to it, like so:
+If we want to use the theme inside of a component we can do so but we need to use a helper called `withTheme()`. It takes a component and the theme property to it, like so:
 
 ```
 import { withTheme } from 'styled-components';
@@ -308,6 +317,20 @@ class TextComponent extends React.Component {
 
 export default withTheme(TextComponent);
 ```
+
+## Compare to using className
+TODO
+
+## Summary
+We have introduced a new way of styling our components by using the `styled-components` library. 
+
+
+
+We've also learned that we get a more semantic looking DOM declaration of our components when we compare it to the classical way of styling using `className` and assigning said property CSS classes.
+
+### Further reading
+TODO
+
 
 
 
