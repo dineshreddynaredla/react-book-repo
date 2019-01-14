@@ -21,7 +21,7 @@ You can argue at this point that I can create component for the card, the card h
   {card.content}
 </card>
 ```
-However these components are likely to be quite simple and only just render their child element. So what you need to ask yourself is do I really need a component for that, when all I want to do is add some CSS styling and call my HTML element what I please. If this is where your thoughts are heading then maybe `styled-components` library might be for you?
+However these components are likely to be quite simple and only just render their child element. So what you need to ask yourself is do I really need a component for that, when all I want to do is add some CSS styling and name my HTML element what I please? If this is where your thoughts are heading then maybe `styled-components` library might be for you?
 
 ## Installing and setting up styled-components
 
@@ -365,12 +365,14 @@ We have introduced a new way of styling our components by using the `styled-comp
 We've also learned that we get a more semantic looking DOM declaration of our components when we compare it to the classical way of styling using `className` and assigning said property CSS classes.
 
 ### Further reading
-The official documentation provides some excellent example of how to further build out your knowledge [Documentation](https://www.styled-components.com/)
+The official documentation provides some excellent example of how to further build out your knowledge [styled-components official documentation](https://www.styled-components.com/)
 
 Hopefully this has convinced you that this is a good way of styling your React components. Since I found this library this is all I ever use, but that's me, you do you :)
 
 If you found this useful please give me a clap 
 
-[chris noring](https://twitter.com/chris_noring)
+[My twitter](https://twitter.com/chris_noring)
+
+My free book on React [Free book](https://chrisnoring.gitbooks.io/react/content/)
 
 
