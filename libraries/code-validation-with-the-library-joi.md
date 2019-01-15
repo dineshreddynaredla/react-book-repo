@@ -155,7 +155,7 @@ Let's see if we can't rebuild it a bit to a middleware. Middlewares in Express i
 So let's look at a middleware. It's just a function right:
 ```
 const handler = (req, res, next) = { // handle our request }
-const middleware = (req, reas, next) => { // to be defined }
+const middleware = (req, res, next) => { // to be defined }
 
 app.post(
   '/blog', 
