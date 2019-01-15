@@ -148,6 +148,9 @@ app.post('/blog', (req, res, next) => {
     }
 });
 ```
+The above works. But we have to define the schema call `validate()` on each request to a specific route. It's, for lack of a better word, lacks elegance. We want something more slick looking. 
+
+Let's see if we can't rebuild it a bit to a middleware. Middlewares in Express is simply something we can stick into the request pipeline whenever we need it. In our case we would want to try and verify our request and early on determine wether it is worth proceeding with it or abort it. 
 
 ## Be the TV Chef
 
