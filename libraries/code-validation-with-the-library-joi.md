@@ -172,6 +172,20 @@ It would be neat if we could provide a schema to our middleware so all we had to
 We should create a module with a factory function and module for all our schemas. Let's have a look at our factory function module first:
 
 ```
+// middleware.js
+
+const middleware = (schema) => {
+  return (req, res, next) => {
+    const result = Joi.validate(schema, req.body)
+    if (result.error == null) {
+      next()
+    } else {
+      res.status(422).json({ error: result.error })
+    }
+  }
+}
+
+module.exports = middleware;
 ```
 
 ## Be the TV Chef
