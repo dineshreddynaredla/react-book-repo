@@ -199,6 +199,7 @@ const schemas = {
     description: Joi.string().required(),
     authorId: Joi.number().required()
  }) 
+ // define all the other schemas below
 };
 
 module.exports = schemas;
