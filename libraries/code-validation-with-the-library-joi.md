@@ -66,10 +66,10 @@ Ok, now we understand the basic motions. What else can we do?
 
 Well Joi supports all sorts of primitives as well as Regex and can be nested to any depth. Let's list some different types it supports:
 
-- string
-- number, Joi.number() and also supporting helper operations such as `min()` and `max()`, like so `Joi.number().min(1).max(10)`
-- required, we can say wether a property is required with the help of the method `required`, like so `Joi.string().required()`
-- any, this means it could be any type, usually we tend to use it with the helper `allow()` that specifies what it can contain, like so,  `Joi.any().allow('a')`
+- **string**, this says it needs to be of type string, and we use it like so `Joi.string()`
+- **number**, Joi.number() and also supporting helper operations such as `min()` and `max()`, like so `Joi.number().min(1).max(10)`
+- **required**, we can say wether a property is required with the help of the method `required`, like so `Joi.string().required()`
+- **any**, this means it could be any type, usually we tend to use it with the helper `allow()` that specifies what it can contain, like so,  `Joi.any().allow('a')`
 
 ## Building a middleware with Joi
 
