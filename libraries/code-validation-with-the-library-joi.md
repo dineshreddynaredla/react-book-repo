@@ -341,6 +341,11 @@ As you can see above we have added the `blogLIST` entry.
 
 #### Testing it out
 Let's head back to `Advanced REST client` and see what happens if we try to navigate to `/products` without adding the query parameters:
+![](/assets/Screen Shot 2019-01-15 at 03.40.16.png)
+
+As you can see `Joi` kicks in and tells us that `page` is missing.
+
+Let's ensure `page` and `pageSize` is added to our URL and try it again:
 
 
 ### Adding router parameters support
