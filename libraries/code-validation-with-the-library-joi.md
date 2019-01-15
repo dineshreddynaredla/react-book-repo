@@ -109,7 +109,7 @@ const blogPostSchema = Joi.object().keys({
 ```
 Note especially the `comments` property, that thing looks exactly like the outer call we first make and it is the same. Nesting is as easy as that.
 
-## Building a middleware with Joi
+## Node.js Express and Joi
 Libraries like these are great but wouldn't it be even better if we could use them in a more seamless way, like in a Request pipeline? Let's have a look firstly how we would use `Joi` in an Express app in Node.js:
 
 ```js
@@ -149,6 +149,8 @@ app.post('/blog', (req, res, next) => {
 });
 ```
 The above works. But we have to define the schema call `validate()` on each request to a specific route. It's, for lack of a better word, lacks elegance. We want something more slick looking. 
+
+### Building a middleware
 
 Let's see if we can't rebuild it a bit to a middleware. Middlewares in Express is simply something we can stick into the request pipeline whenever we need it. In our case we would want to try and verify our request and early on determine wether it is worth proceeding with it or abort it. 
 
@@ -221,13 +223,27 @@ Ok then, let's head back to our application file:
 ```
 // app.js 
 
-const { blogPOST } = require('./schemas');
+const express = require('express')
+const cors = require('cors');
+const app = express()
+const port = 3000
+
+const schemas = require('./schemas');
 const middleware = require('./middleware');
 
-const handler = (req, res ) => { // handle request }
-// define express omitted...
+var bodyParser = require("body-parser");
+app.use(cors());
+app.use(bodyParser.json());
 
-app.post('/blog', middleware(blogPost), handler);
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.post('/blog', middleware(schemas.blogPOST) ,function (req, res) {
+  console.log('/update');
+
+  res.json(req.body);
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 ```
 
 ## Be the TV Chef
@@ -235,7 +251,7 @@ TODO
 
 ## Summary
 
-We have introduced the validation library `Joi` and presented some basic features and how to use it. Furthermore we have looked at how to create a middleware for Express and use Joi in a smart way. Lastly we have looked at a ready made library that does exactly what our middleware does and then some. 
+We have introduced the validation library `Joi` and presented some basic features and how to use it. Lastly we have looked at how to create a middleware for Express and use Joi in a smart way. 
 
 All in all I hope this has been educational. 
 
