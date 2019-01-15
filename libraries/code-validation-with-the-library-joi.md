@@ -110,6 +110,11 @@ const blogPostSchema = Joi.object().keys({
 Note especially the `comments` property, that thing looks exactly like the outer call we first make and it is the same. Nesting is as easy as that.
 
 ## Building a middleware with Joi
+Libraries like these are great but wouldn't it be even better if we could use them in a more seamless way, like in a Request pipeline? Let's have a look firstly how we would use `Joi` in an Express app in Node.js:
+
+```js
+
+```
 
 ## Be the TV Chef
 
