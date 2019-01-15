@@ -251,8 +251,10 @@ There are many ways to test this out. We could do a `fetch()` call from a browse
 
 Let's try to make a POST request to `/blog`. Remember our schema for this route said that `title` and `description` were mandatory so let's try to crash it, let's omit `title` and see what happens:
 
-
- 
+![](/assets/Screen Shot 2019-01-15 at 03.24.13.png)
+Aha, we get a 422 status code and the message `title is required`, so Joi does what it is supposed to. Just for safety sake let's re add `title`:
+![](/assets/Screen Shot 2019-01-15 at 03.25.35.png) 
+Ok, happy days, it works again.
 
 ### Support router and query parameters
 
