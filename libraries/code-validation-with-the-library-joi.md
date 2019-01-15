@@ -246,8 +246,16 @@ app.post('/blog', middleware(schemas.blogPOST) ,function (req, res) {
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 ```
 
-## Be the TV Chef
-TODO
+#### Testing it out
+There are many ways to test this out. We could do a `fetch()` call from a browser console or use cURL and so on. We opt for using a chrome plugin called `Advanced REST Client`.
+
+Let's try to make a POST request to `/blog`. Remember our schema for this route said that `title` and `description` were mandatory so let's try to crash it, let's omit `title` and see what happens:
+
+
+ 
+
+### Support router and query parameters
+
 
 ## Summary
 
