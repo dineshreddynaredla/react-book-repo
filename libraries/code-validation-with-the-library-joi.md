@@ -382,6 +382,14 @@ const schemas = {
 module.exports = schemas;
 ```
 
+#### Try it out
+
+Last step is trying it out so let's first test to navigate to `/products/abc`. That should throw an error, we are only OK with numbers over 0:
+![](/assets/Screen Shot 2019-01-15 at 03.43.10.png)
+
+Ok, now for a URL stating `/products/0`, our other requirement:
+![](/assets/Screen Shot 2019-01-15 at 03.44.07.png)
+Also that fails, as expected.
 
 ## Summary
 
@@ -391,7 +399,8 @@ All in all I hope this has been educational.
 
 ### Further reading
 
-- Joi, official docs
+- Joi, official docs [Official docs](https://github.com/hapijs/joi)
 - exhaustive blog post on Joi validation, if you need more complex examples [Blog post](https://scotch.io/tutorials/node-api-schema-validation-with-joi)
-- Free React book []()
+
+[My Twitter](https://twitter.com/chris_noring)
 
