@@ -172,15 +172,25 @@ It would be neat if we could provide a schema to our middleware so all we had to
 We should create a module with a factory function and module for all our schemas. Let's have a look at our factory function module first:
 
 ```
-// middleware.js
+const Joi = require('joi');
 
-const middleware = (schema) => {
+const middleware = (schema, property) => {
   return (req, res, next) => {
-    const result = Joi.validate(schema, req.body)
-    if (result.error == null) {
-      next()
+
+    const { error } = Joi.validate(req.body, schema);
+
+    const valid = error == null;
+    if (valid) {
+      next();
     } else {
-      res.status(422).json({ error: result.error })
+      
+      const { details } = error;
+      const message = details.map(i => i.message).join(',');
+      console.log("error", message);
+
+      res.status(422).json({
+        error: message 
+      })
     }
   }
 }
@@ -198,8 +208,7 @@ const Joi = require('joi')
 const schemas = {
  blogPOST: Joi.object().keys({
     title: Joi.string().required
-    description: Joi.string().required(),
-    authorId: Joi.number().required()
+    description: Joi.string().required()
  }) 
  // define all the other schemas below
 };
@@ -210,6 +219,8 @@ module.exports = schemas;
 Ok then, let's head back to our application file:
 
 ```
+// app.js 
+
 const { blogPOST } = require('./schemas');
 const middleware = require('./middleware');
 
