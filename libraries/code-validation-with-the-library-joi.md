@@ -77,7 +77,37 @@ Well Joi supports all sorts of primitives as well as Regex and can be nested to 
 The whole API for Joi is enormous. I suggest to have a look and see if there is a helper function that can solve whatever case you have that I'm not showing above [Joi API](https://github.com/hapijs/joi/blob/v14.3.1/API.md)
 
 ### Nested types
+Ok so we have only showed how to declare a `schema` so far that is one level deep. We did so by calling the following:
 
+```
+Joi.object().keys({
+
+});
+
+```
+This stated that our data is an object. Then we added some properties to our object like so:
+
+```
+Joi.object().keys({
+  name: Joi.string().alphanum().min(3).max(30).required(),
+  birthyear: Joi.number().integer().min(1970).max(2013)
+});
+```
+Now, nested structures are really more of the same. Let's create an entirely new schema, a schema for a blog post, looking like this:
+```js
+const blogPostSchema = Joi.object().keys({
+  title: Joi.string().alphanum().min(3).max(30).required(),
+  description: Joi.string(),
+  comments: Joi.array().items(
+    Joi.object.keys({
+      description: Joi.string(),
+      author: Joi.string().required(),
+      grade: Joi.number().min(1).max(5)
+    })
+  )
+});
+```
+Note especially the `comments` property, that thing looks exactly like the outer call we first make and it is the same. Nesting is as easy as that.
 
 ## Building a middleware with Joi
 
