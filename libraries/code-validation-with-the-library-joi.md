@@ -188,6 +188,22 @@ const middleware = (schema) => {
 module.exports = middleware;
 ```
 
+Let's thereafter create a module for all our schemas, like so:
+
+```
+const Joi = require('joi')
+
+const schemas = {
+ blogPOST: Joi.object().keys({
+    title: Joi.string().required
+    description: Joi.string().required(),
+    authorId: Joi.number().required()
+ }) 
+};
+
+module.exports = schemas;
+```
+
 ## Be the TV Chef
 
 ## Summary
