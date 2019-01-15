@@ -71,6 +71,8 @@ Well Joi supports all sorts of primitives as well as Regex and can be nested to 
 - **required**, we can say wether a property is required with the help of the method `required`, like so `Joi.string().required()`
 - **any**, this means it could be any type, usually we tend to use it with the helper `allow()` that specifies what it can contain, like so,  `Joi.any().allow('a')`
 - **optional**, this is strictly speaking not a type but has an interesting effect. If you specify for example `prop : Joi.string().optional`. If we don't provide `prop` then everybody's happy. However if we do provide it and make it an integer the validation will fail
+- array, we can check wether the property is an array of say strings, then it would look like this ` Joi.array().items(Joi.string().valid('a', 'b')` 
+- regex
 
 ## Building a middleware with Joi
 
