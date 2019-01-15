@@ -58,6 +58,10 @@ const result = Joi.validate(dataToValidate, schema);
 
 result.error // result.error == null means it's valid
 ```
+What we are looking at above is us doing the following:
+- constructing a schema, our call to `Joi.object()`,
+- validating our data, our vall to `Joi.validate()` with `dataToValidate` and `schema` as input parameters
+
 
 
 ## Building a middleware with Joi
