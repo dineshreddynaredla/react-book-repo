@@ -163,6 +163,16 @@ app.post(
   handler
 )
 ```
+It would be neat if we could provide a schema to our middleware so all we had to do in the middleware function was something like this:
+```
+(req, res, next) => {
+  const result = Joi.validate(schema, data)
+}
+```
+We should create a module with a factory function and module for all our schemas. Let's have a look at our factory function module first:
+
+```
+```
 
 ## Be the TV Chef
 
