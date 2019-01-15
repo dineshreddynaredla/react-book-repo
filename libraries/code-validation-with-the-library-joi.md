@@ -113,7 +113,40 @@ Note especially the `comments` property, that thing looks exactly like the outer
 Libraries like these are great but wouldn't it be even better if we could use them in a more seamless way, like in a Request pipeline? Let's have a look firstly how we would use `Joi` in an Express app in Node.js:
 
 ```js
+const Joi = require('joi');
 
+// set up Express is omitted
+
+app.post('/blog', (req, res, next) => {
+    
+    // get the body
+    const { body } = req;
+
+    // define the validation schema
+    const blogSchema = Joi.object().keys({
+        title: Joi.string().required
+        description: Joi.string().required(),
+        authorId: Joi.number().required()
+    });
+
+    // validate the body
+    const result = Joi.validate(body, blogShema);
+    const { value, error } = result;
+    const valid = error == null;
+    if (!valid) {
+      res.status(422).json({
+        message: 'Invalid request',
+        data: body
+      })
+    } else {
+      const createdPost = await api.createPost(data);
+    
+      res.json({
+        message: 'Resource created',
+        data: createdPost
+      })
+    }
+});
 ```
 
 ## Be the TV Chef
