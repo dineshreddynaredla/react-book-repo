@@ -223,3 +223,13 @@ app.post('/blog', middleware(blogPost), handler);
 
 ## Summary
 
+We have introduced the validation library `Joi` and presented some basic features and how to use it. Furthermore we have looked at how to create a middleware for Express and use Joi in a smart way. Lastly we have looked at a ready made library that does exactly what our middleware does and then some. 
+
+All in all I hope this has been educational. 
+
+### Further reading
+
+- Joi, official docs
+- exhaustive blog post on Joi validation, if you need more complex examples [Blog post](https://scotch.io/tutorials/node-api-schema-validation-with-joi)
+- Free React book []()
+
