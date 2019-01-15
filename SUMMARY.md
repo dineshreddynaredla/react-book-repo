@@ -71,4 +71,5 @@
 ## LIBRARIES
 
 * [storybook](libraries/storybook.md)
+* [Joi - awesome code validation](libraries/code-validation-with-the-library-joi.md)
 
