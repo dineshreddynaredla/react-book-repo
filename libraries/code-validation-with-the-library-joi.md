@@ -346,7 +346,8 @@ Let's head back to `Advanced REST client` and see what happens if we try to navi
 As you can see `Joi` kicks in and tells us that `page` is missing.
 
 Let's ensure `page` and `pageSize` is added to our URL and try it again:
-
+![](/assets/Screen Shot 2019-01-15 at 03.41.34.png)
+Ok, everybody is happy again. :)
 
 ### Adding router parameters support
 Just like with query parameters we just need to point out where we find our parameters, in Express those reside under `req.params`. Thanks to the works we already done with `middleware.js` we just need to update our `app.js` with our new route entry like so:
