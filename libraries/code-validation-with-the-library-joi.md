@@ -339,6 +339,40 @@ module.exports = schemas;
 ```  
 As you can see above we have added the `blogLIST` entry.
 
+#### Adding router parameters support
+Just like with query parameters we just need to point out where we find our parameters, in Express those reside under `req.params`. Thanks to the works we already done with `middleware.js` we just need to update our `app.js` with our new route entry like so:
+
+```
+// app.js
+app.get('/products/:id', middleware(schemas.blogDETAIL, 'params'), function(req, res) {
+  console.log("/products/:id");
+  const { id } = req.params;
+  res.json(req.params);
+})
+```
+At this point we need to go into `schemas.js` and add the `blogDetail` entry so `schemas.js` should now look like the following:
+```
+const Joi = require('joi');
+
+const schemas = {
+  blogPOST: Joi.object().keys({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+    year: Joi.number()
+  }),
+  blogLIST: {
+    page: Joi.number().required(),
+    pageSize: Joi.number().required()
+  },
+  blogDETAIL: {
+    id: Joi.number().min(1).required()
+  }
+};
+
+module.exports = schemas;
+```
+
+
 ## Summary
 
 We have introduced the validation library `Joi` and presented some basic features and how to use it. Lastly we have looked at how to create a middleware for Express and use Joi in a smart way. 
