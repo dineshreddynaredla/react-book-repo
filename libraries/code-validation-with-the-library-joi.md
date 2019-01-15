@@ -33,6 +33,31 @@ There are many libs that will do this for you. I aim to describe a specific one 
 - **Look at** ready made middleware, as fun as it is to build your own code, someone who has already built one is great, they might have thought of edge cases you haven't and you really don't have the time to build it, or do you?
 
 ## Introducing Joi
+Installing Joi is quite easy. We just need to type:
+
+```
+npm install joi
+```
+
+After that we are ready to use it. Let's have a quick look at how we use it. First thing we do is import it and then we set up some rules, like so:
+
+```js
+const Joi = require('joi');
+
+const schema = Joi.object().keys({
+    name: Joi.string().alphanum().min(3).max(30).required(),
+    birthyear: Joi.number().integer().min(1970).max(2013),
+});
+
+const dataToValidate = {
+  name 'chris',
+  birthyear: 1971
+}
+
+const result = Joi.validate(dataToValidate, schema);
+
+result.error // result.error == null means it's valid
+```
 
 
 ## Building a middleware with Joi
