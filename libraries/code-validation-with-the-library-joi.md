@@ -191,6 +191,8 @@ module.exports = middleware;
 Let's thereafter create a module for all our schemas, like so:
 
 ```
+// schemas.js
+
 const Joi = require('joi')
 
 const schemas = {
@@ -203,6 +205,18 @@ const schemas = {
 };
 
 module.exports = schemas;
+```
+
+Ok then, let's head back to our application file:
+
+```
+const { blogPOST } = require('./schemas');
+const middleware = require('./middleware');
+
+const handler = (req, res ) => { // handle request }
+// define express omitted...
+
+app.post('/blog', middleware(blogPost), handler);
 ```
 
 ## Be the TV Chef
