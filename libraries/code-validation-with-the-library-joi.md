@@ -401,6 +401,7 @@ All in all I hope this has been educational.
 
 - Joi, official docs [Official docs](https://github.com/hapijs/joi)
 - exhaustive blog post on Joi validation, if you need more complex examples [Blog post](https://scotch.io/tutorials/node-api-schema-validation-with-joi)
+- [Demo repository](https://github.com/softchris/joi-example)
 
 [My Twitter](https://twitter.com/chris_noring)
 
