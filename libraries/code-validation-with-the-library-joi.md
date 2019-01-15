@@ -261,7 +261,7 @@ Ok, great we can deal with BODY in POST request what about router parameters and
 - `query parameters`, here it makes sense to check that for example parameters like `page` and `pageSize` exist and is of type `number`. Imagine us doing a crazy request and our database contains a few million products, AOUCH :)
 - `router parameters`, here it would make sense to first off check that we are getting a `number` if we should get a number that is ( we could be sending GUIDs for example ) and maybe check that we are not sending something that is obviously wrong like a `0` or something
 
-#### Adding query parameters support
+### Adding query parameters support
 Ok, we know of query parameters in Express that they reside under the `request.query`. So the simplest thing we could do here is to ensure our  `middleware.js` takes another parameter, like so:
 
 ```
@@ -339,7 +339,11 @@ module.exports = schemas;
 ```  
 As you can see above we have added the `blogLIST` entry.
 
-#### Adding router parameters support
+#### Testing it out
+Let's head back to `Advanced REST client` and see what happens if we try to navigate to `/products` without adding the query parameters:
+
+
+### Adding router parameters support
 Just like with query parameters we just need to point out where we find our parameters, in Express those reside under `req.params`. Thanks to the works we already done with `middleware.js` we just need to update our `app.js` with our new route entry like so:
 
 ```
