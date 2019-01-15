@@ -152,6 +152,18 @@ The above works. But we have to define the schema call `validate()` on each requ
 
 Let's see if we can't rebuild it a bit to a middleware. Middlewares in Express is simply something we can stick into the request pipeline whenever we need it. In our case we would want to try and verify our request and early on determine wether it is worth proceeding with it or abort it. 
 
+So let's look at a middleware. It's just a function right:
+```
+const handler = (req, res, next) = { // handle our request }
+const middleware = (req, reas, next) => { // to be defined }
+
+app.post(
+  '/blog', 
+  middleware,
+  handler
+)
+```
+
 ## Be the TV Chef
 
 ## Summary
