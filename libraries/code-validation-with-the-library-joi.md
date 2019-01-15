@@ -70,7 +70,7 @@ Well Joi supports all sorts of primitives as well as Regex and can be nested to 
 - **number**, Joi.number() and also supporting helper operations such as `min()` and `max()`, like so `Joi.number().min(1).max(10)`
 - **required**, we can say wether a property is required with the help of the method `required`, like so `Joi.string().required()`
 - **any**, this means it could be any type, usually we tend to use it with the helper `allow()` that specifies what it can contain, like so,  `Joi.any().allow('a')`
-- optional, this is strictly speaking not a type but has an interesting effect. If you specify for example `prop : Joi.string().optional`. If we don't provide `prop` then everybody's happy. However if we do provide it and make it an integer the validation will fail
+- **optional**, this is strictly speaking not a type but has an interesting effect. If you specify for example `prop : Joi.string().optional`. If we don't provide `prop` then everybody's happy. However if we do provide it and make it an integer the validation will fail
 
 ## Building a middleware with Joi
 
