@@ -257,7 +257,87 @@ Aha, we get a 422 status code and the message `title is required`, so Joi does w
 Ok, happy days, it works again.
 
 ### Support router and query parameters
+Ok, great we can deal with BODY in POST request what about router parameters and query parameters and what would we like to validate with them:
+- `query parameters`, here it makes sense to check that for example parameters like `page` and `pageSize` exist and is of type `number`. Imagine us doing a crazy request and our database contains a few million products, AOUCH :)
+- `router parameters`, here it would make sense to first off check that we are getting a `number` if we should get a number that is ( we could be sending GUIDs for example ) and maybe check that we are not sending something that is obviously wrong like a `0` or something
 
+#### Adding query parameters support
+Ok, we know of query parameters in Express that they reside under the `request.query`. So the simplest thing we could do here is to ensure our  `middleware.js` takes another parameter, like so:
+
+```
+const middleware = (schema, property) => { }
+```
+and our full code for `middleware.js` would therefore look like this:
+
+```
+const Joi = require('joi');
+
+const middleware = (schema, property) => {
+  return (req, res, next) => {
+
+    const { error } = Joi.validate(req[property], schema);
+
+    const valid = error == null;
+    if (valid) {
+      next();
+    } else {
+      
+      const { details } = error;
+      const message = details.map(i => i.message).join(',');
+      console.log("error", message);
+
+      res.status(422).json({
+        error: message 
+      })
+    }
+  }
+}
+
+module.exports = middleware;
+```
+
+This would mean we would have to have a look at `app.js` and change how we invoke our `middleware()` function. First off our POST request would now have to look like this:
+
+```js
+app.post('/blog', middleware(schemas.blogPOST, 'body') ,function (req, res) {
+  console.log('/update');
+
+  res.json(req.body);
+});
+```
+with the added parameter `body`. 
+
+Let's now add the request who's query parameters we are interested in:
+
+```
+app.get('/products', middleware(schemas.blogLIST, 'query'), function (req, res) {
+  console.log('/products');
+
+  const { page, pageSize } = req.query;
+  res.json(req.query);
+});
+``` 
+As you can see all we have to do here is adding the argument `query`. Lastly let's have a look at our `schemas.js`:
+
+```
+// schemas.js
+const Joi = require('joi');
+
+const schemas = {
+  blogPOST: Joi.object().keys({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+    year: Joi.number()
+  }),
+  blogLIST: {
+    page: Joi.number().required(),
+    pageSize: Joi.number().required()
+  }
+};
+
+module.exports = schemas;
+```  
+As you can see above we have added the `blogLIST` entry.
 
 ## Summary
 
