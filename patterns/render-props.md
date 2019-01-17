@@ -28,7 +28,7 @@ const ProductDetail = ({data}) => (
 As we can see above we have two different components `ProductDetail` and `Fetch`. `ProductDetail` just looks like a presentation component. `Fetch` on the other hand looks a bit different. It has a property `url` on it and it seems like it has a `render` property that ends up rendering our `ProductDetail`. 
 
 
-## Render props explained
+## Render props explained - lifecycle begone !
 We can reverse engineer this and figure out this works.
 
 
