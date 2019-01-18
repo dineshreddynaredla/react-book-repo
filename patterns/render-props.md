@@ -54,7 +54,10 @@ This is what the pattern is, at its simplest. Of course the way we use the `Fetc
 ```
 (data) => <ProductDetail product={data.product} />
 ```
-We can see above that that we need a parameter `data` and `data` seems to be an object. Ok, so where does `data` come from? Well thats the thing with our `Fetch` component, it does some heavy lifting for us namely carrying out HTTP calls. Let's add some life cycle methods to `Fetch` so it looks like this:
+We can see above that that we need a parameter `data` and `data` seems to be an object. Ok, so where does `data` come from? Well thats the thing with our `Fetch` component, it does some heavy lifting for us namely carrying out HTTP calls. 
+
+## Creating a component for HTTP
+Let's add some life cycle methods to `Fetch` so it looks like this:
 
 ```
 // first draft 
@@ -85,15 +88,18 @@ class Fetch extends React.Component {
   }  
 }
 ```
-Ok, now we have fleshed out our component a little. However it lacks two things:
+Ok, now we have fleshed out our component a little. We've added the method `fetchData()` that makes HTTP calls given `this.props.url` and we can see that our render method renders `null` if `this.state.data` isn't set, but if the HTTP call finished we invoke `this.props.render(data)` with our JSON response.
 
-- handling loading, right now we render nothing if `fetch()` call hasn't finished, that isn't very nice
-- handling `this.props.url`, this prop might not be set initially and it might be changed over time, so we should handle that
+However it lacks three things:
+
+- **handling error**, we should add logic to handle error
+- **handling loading**, right now we render nothing if `fetch()` call hasn't finished, that isn't very nice
+- **handling this.props.url**, this prop might not be set initially and it might be changed over time, so we should handle that
  
 
 
 
-## Creating a component for HTTP
+
 ## A/B Testing
 ## Creating a component for Paging
 
