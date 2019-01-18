@@ -3,7 +3,6 @@
 What is Render props? Render props is way for us to create a component that provides some kind of data to another component. Why would we want that? Well imagine that we wanted to do something of the following:
 
 - **fetching data**, wouldn't it be nice to have a component that abstracts away all of the mess of HTTP and just serves you the data when it's done?
-- **paging**, imagine you pass in a data source, the page you want to see and the number of items on the page and out comes just the data you want
 - **A/B testing**, as you launch an app into production you will eventually want to improve but you might not know the best way forward or you might want to release often and push the code to production but some feature is not yet ready to see the light of day, so you wan't to be able to conditionally decide wether something is visible or not
 
 ![](/assets/blaze-bonfire-burn-1374891.jpg)
@@ -285,9 +284,22 @@ Ok, so introduce three states here:
 - **false**, when we know the flag is false
 - **void 0/undefined**, when the flags value hasn't been resolved yet
 
+Why do we need three states? 
+Well, we want to make sure it renders exactly what it should be rendering and that it doesn't show something it shouldn't, if only for a millisecond.
 
+Ok, that sounds a bit nuts, `localStorage.getItem()` is usually fast to respond.
 
-## Creating a component for Paging
+Yea sure, ok, I might be a wee bit crazy, but what if the flag value isn't in `localStorage` but it resides on a service that we need to call, then it might take some time to get the value back... 
+
+So imagine our `componentDidMount()` looks like this instead:
+
+```js
+async componentDidMount() {
+  const enabled = await flagService.get(this.props.flag);
+  this.setState({ enabled });
+}
+```
+That's a minor change if you want to place your flags in a service instead of `localStorage`:
 
 ## Summary
 ### Further reading 
