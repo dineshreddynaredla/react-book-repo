@@ -31,10 +31,70 @@ As we can see above we have two different components `ProductDetail` and `Fetch`
 
 
 ## Render props explained
-We can reverse engineer this and figure out this works.
+We can reverse engineer this and figure out how this works.
+
+Let's have a look at the code again:
+
+```
+<Fetch url="some url where my data is" render={(data) => 
+  <ProductDetail product={data.product} />
+}>
+```
+Our `Fetch` component has an attribute `render` that seems to take a function that ends up producing JSX. Here is the thing the whole render-props pattern is about us invoking a function in our return method. Let me explain that by showing some code:
+
+```
+class Fetch extends React.Component {
+  render() {
+    return this.props.render();
+  }  
+}
+```
+This is what the pattern is, at its simplest. Of course the way we use the `Fetch` component means we at least need to send something into the `this.props.render()` call. Let's just extract the function invocation bit above and look at it:
+
+```
+(data) => <ProductDetail product={data.product} />
+```
+We can see above that that we need a parameter `data` and `data` seems to be an object. Ok, so where does `data` come from? Well thats the thing with our `Fetch` component, it does some heavy lifting for us namely carrying out HTTP calls. Let's add some life cycle methods to `Fetch` so it looks like this:
+
+```
+// first draft 
+
+class Fetch extends React.Component {
+  state = {
+    data: void 0,
+    error: void 0
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+  
+  async fetchData() {
+    try {
+      const response = await fetch(this.props.url);
+      const json = await response.json();
+      this.setState({ data: json });
+    catch (err) {
+      this.setState({ error: err })
+    }
+  }
+
+  render() {
+    if (!this.state.data) return null;
+    else return this.props.render(this.state.data);
+  }  
+}
+```
+Ok, now we have fleshed out our component a little. However it lacks two things:
+
+- handling loading, right now we render nothing if `fetch()` call hasn't finished, that isn't very nice
+- handling `this.props.url`, this prop might not be set initially and it might be changed over time, so we should handle that
+ 
+
 
 
 ## Creating a component for HTTP
+## A/B Testing
 ## Creating a component for Paging
 
 ## Summary
