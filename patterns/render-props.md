@@ -88,13 +88,50 @@ class Fetch extends React.Component {
   }  
 }
 ```
-Ok, now we have fleshed out our component a little. We've added the method `fetchData()` that makes HTTP calls given `this.props.url` and we can see that our render method renders `null` if `this.state.data` isn't set, but if the HTTP call finished we invoke `this.props.render(data)` with our JSON response.
+Ok, now we have fleshed out our component a little. We've added the method `fetchData()` that makes HTTP calls given `this.props.url` and we can see that our `render()` method renders `null` if `this.state.data` isn't set, but if the HTTP call finished we invoke `this.props.render(data)` with our JSON response.
 
 However it lacks three things:
 
 - **handling error**, we should add logic to handle error
 - **handling loading**, right now we render nothing if `fetch()` call hasn't finished, that isn't very nice
 - **handling this.props.url**, this prop might not be set initially and it might be changed over time, so we should handle that
+
+### Handling errors
+We can easily handle this one by changing our render() method a little to cater to if `this.state.error` is set, after all we have already written logic that sets `this.state.error` in our catch clause in the `fetchData()` method.
+
+Here goes:
+
+```
+class Fetch extends React.Component {
+  state = {
+    data: void 0,
+    error: void 0
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+  
+  async fetchData() {
+    try {
+      const response = await fetch(this.props.url);
+      const json = await response.json();
+      this.setState({ data: json });
+    catch (err) {
+      this.setState({ error: err })
+    }
+  }
+
+  render() {
+    if(this.state.error) return this.props.error(this.state.error);
+    if (this.props.render(this.state.data)) return null;
+    else return null;
+  }  
+}
+```
+Above we added handling of `this.state.error` by invoking `this.props.error()`, so that is a thing we need to reflect once we try to use the `Fetch` component.
+
+
  
 
 
