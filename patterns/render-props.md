@@ -125,8 +125,10 @@ class Fetch extends React.Component {
   }
 
   render() {
-    if(this.state.error) return this.props.error(this.state.error);
-    if (this.props.render(this.state.data)) return this.props.render(data);
+    const { error, data, loading } = this.state;
+  
+    if(error) return this.props.error(error);
+    if (this.props.render(data)) return this.props.render(data);
     else return null;
   }  
 }
@@ -165,7 +167,7 @@ class Fetch extends React.Component {
     const { error, data, loading } = this.state;
   
     if(loading) return <div>Loading...</div>
-    if(this.state.error) return this.props.error(error);
+    if(error) return this.props.error(error);
     if (this.props.render(data)) return this.props.render(data);
     else return null;
   }  
@@ -226,11 +228,65 @@ class Fetch extends React.Component {
   }  
 }
 
+```
+To use our component we can now type:
 
 ```
+<Fetch url={url-to-product} 
+  render={(data) => <ProductDetail product={data.product} />}
+  error={(error) => <div>{error.message}</div>}
+/>
+```
 
- 
 ## A/B Testing
+Let's move on to our next case. We will sooner or later have probably two major reasons for wanting to show code conditionally using this component:
+- it's not ready yet, we want to deploy often and we may want to show a new feature only to our Product Owner so we can gather feedback, so if we would be able to control the showing of this components content with a flag would be great
+- A/B test, let's say we don't which new Checkout page we want to go with in our e-conmerce app, then it would be great if we can send half the users to version1 and the other half to version 2. In such a scenario you might have two different pages but if the different is minor like the toggling of a few sections then this could be a good candidate. 
+
+Ok, let's look at how we would be using this component:
+
+```
+<FeatureFlag 
+  flag={showAlternateSection}
+  render={()=> <div>Alternate design</div>}
+  else={()=> <div>Normal design</div>}  
+/>
+```
+Above we have a component `FeatureFlag` and the the following attributes, let's break down how we mean to use them:
+
+- flag, this would be the name of the feature flag, most likely a string
+- render, this would be a method we invoke given that the feature flag is enabled
+- else, this would be a method we invoke if feature flag is disabled or non existent
+
+### Building our component
+Ok, we know how we intend to use our component, let's try to build it:
+
+```
+class FeatureFlag extends React.Component { 
+  state = {
+    enabled: void 0
+  }
+  
+  componentDidMount() {
+    const enabled = localStorage.getItem(this.props.flag) === 'true';
+    this.setState({ enabled });
+  }
+  
+  render() {
+    if(enabled) return this.props.render();
+    else if(enabled === false) return this.props.else();
+    else return null;
+  }
+}
+```
+Ok, so introduce three states here:
+
+- **true**, when we know the flag is true
+- **false**, when we know the flag is false
+- **void 0/undefined**, when the flags value hasn't been resolved yet
+
+
+
 ## Creating a component for Paging
 
 ## Summary
