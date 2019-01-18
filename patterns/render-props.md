@@ -2,8 +2,9 @@
 
 What is Render props? Render props is way for us to create a component that provides some kind of data to another component. Why would we want that? Well imagine that we wanted to do something of the following:
 
-* **fetching data**, wouldn't it be nice to have a component that abstracts away all of the mess of HTTP and just serves you the data when it's done?
-* **paging**, imagine you pass in a data source, the page you want to see and the number of items on the page and out comes just the data you want
+- **fetching data**, wouldn't it be nice to have a component that abstracts away all of the mess of HTTP and just serves you the data when it's done?
+- **paging**, imagine you pass in a data source, the page you want to see and the number of items on the page and out comes just the data you want
+- **A/B testing**, as you launch an app into production you will eventually want to improve but you might not know the best way forward or you might want to release often and push the code to production but some feature is not yet ready to see the light of day, so you wan't to be able to conditionally decide wether something is visible or not
 
 ![](/assets/blaze-bonfire-burn-1374891.jpg)
 
