@@ -126,7 +126,7 @@ class Fetch extends React.Component {
 
   render() {
     if(this.state.error) return this.props.error(this.state.error);
-    if (this.props.render(this.state.data)) return null;
+    if (this.props.render(this.state.data)) return this.props.render(data);
     else return null;
   }  
 }
