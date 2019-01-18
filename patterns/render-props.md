@@ -302,5 +302,19 @@ async componentDidMount() {
 That's a minor change if you want to place your flags in a service instead of `localStorage`:
 
 ## Summary
+Render props pattern is all about rendering a function that itself renders JSX and as you can see you can create quite powerful and useful components based on this design pattern. 
+
+Hopey you found this article useful, if you did, please give me some claps.
+
+Oh I would love it if you left me some links in the comments to Components you built using the Render props pattern. 
+
+Stay safe, remember it's never your fault, it's the compiler ;)
+
+
 ### Further reading 
+
+- [Render props pattern](https://reactjs.org/docs/render-props.html)
+- [My free book on React](https://legacy.gitbook.com/book/chrisnoring/react/details)
+
+[My twitter](https://twitter.com/chris_noring)
 
