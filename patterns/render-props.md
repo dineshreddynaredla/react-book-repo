@@ -102,6 +102,8 @@ We can easily handle this one by changing our render() method a little to cater 
 Here goes:
 
 ```
+// second draft
+
 class Fetch extends React.Component {
   state = {
     data: void 0,
@@ -131,12 +133,48 @@ class Fetch extends React.Component {
 ```
 Above we added handling of `this.state.error` by invoking `this.props.error()`, so that is a thing we need to reflect once we try to use the `Fetch` component.
 
+### handling loading
+for this one we just need to add a new state `loading` and updated the `render()` method to look at said property, like so:
+
+```
+// third draft
+
+class Fetch extends React.Component {
+  state = {
+    data: void 0,
+    error: void 0
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+  
+  async fetchData() {
+    try {
+      this.setState({ loading: true });
+      const response = await fetch(this.props.url);
+      const json = await response.json();
+      this.setState({ data: json });
+      this.setState({ loading: false });
+    catch (err) {
+      this.setState({ error: err })
+    }
+  }
+
+  render() {
+    if(this.state.loading) return <div>Loading...</div>
+    if(this.state.error) return this.props.error(this.state.error);
+    if (this.props.render(this.state.data)) return null;
+    else return null;
+  }  
+}
+```
+Now, above we are a bit sloppy handling the loading, yes we add an `if` for it but what we render can most likely be improved using a nice component that looks like a spinner or a ghost image, so that's worth thinking about.
+
+### Handling changes to this.props.url
+It's entirely possible that this url can change and we need to cater to it, unless we plan on using the component like so `<Fetch url="static-url">`, in which case you should skip this section and look at the next section instead ;)
 
  
-
-
-
-
 ## A/B Testing
 ## Creating a component for Paging
 
