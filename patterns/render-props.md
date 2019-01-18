@@ -59,7 +59,7 @@ We can see above that that we need a parameter `data` and `data` seems to be an 
 ## Creating a component for HTTP
 Let's add some life cycle methods to `Fetch` so it looks like this:
 
-```
+```js
 // first draft 
 
 class Fetch extends React.Component {
@@ -101,7 +101,7 @@ We can easily handle this one by changing our render() method a little to cater 
 
 Here goes:
 
-```
+```js
 // second draft
 
 class Fetch extends React.Component {
@@ -136,7 +136,7 @@ Above we added handling of `this.state.error` by invoking `this.props.error()`, 
 ### handling loading
 for this one we just need to add a new state `loading` and updated the `render()` method to look at said property, like so:
 
-```
+```js
 // third draft
 
 class Fetch extends React.Component {
@@ -173,6 +173,59 @@ Now, above we are a bit sloppy handling the loading, yes we add an `if` for it b
 
 ### Handling changes to this.props.url
 It's entirely possible that this url can change and we need to cater to it, unless we plan on using the component like so `<Fetch url="static-url">`, in which case you should skip this section and look at the next section instead ;)
+
+The React API recently changed, before the change we would've needed to add the life cycle method `componentWillReceiveProps` to look at if a prop changed, it's considered unsafe however so we must instead use 
+
+```
+componentDidUpdate(prevProps) {
+  if (this.props.url && this.props.url !== prevProps.url) {
+    this.fetchData(this.props.url);
+  }
+}
+```
+That's it, that's what we need, let's show the full code for this component:
+
+```js
+// final draft
+
+class Fetch extends React.Component {
+  state = {
+    data: void 0,
+    error: void 0
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (this.props.url && this.props.url !== prevProps.url) {
+      this.fetchData(this.props.url);
+    }
+  }
+
+  async fetchData() {
+    try {
+      this.setState({ loading: true });
+      const response = await fetch(this.props.url);
+      const json = await response.json();
+      this.setState({ data: json });
+      this.setState({ loading: false });
+    catch (err) {
+      this.setState({ error: err })
+    }
+  }
+
+  render() {
+    if(this.state.loading) return <div>Loading...</div>
+    if(this.state.error) return this.props.error(this.state.error);
+    if (this.props.render(this.state.data)) return null;
+    else return null;
+  }  
+}
+
+
+```
 
  
 ## A/B Testing
