@@ -34,6 +34,29 @@ However, we found that class components can encourage unintentional patterns tha
 Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
 
 ## What is a hook?
+Let's try to answer that question by working ourselves through some of the Hooks offered to us. 
+
+### First example - useState
+This Hook let use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
+
+```js
+import { useState } from React;
+
+const Counter = () => {
+ const [counter, setCounter] = useState(0);
+ 
+ return (
+  <div>
+    <button onClick={setCounter(count + 1)} >Increment</button>
+  </div>
+ )
+}
+```
+Ok we see that we use the Hook `useState` by invoking it and we invoke it like so:
+
+> useState(0)
+
+This means we give it an initial value of 0.
 
 ## Are there more than one Hook?
 
