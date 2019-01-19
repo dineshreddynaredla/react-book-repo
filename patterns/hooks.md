@@ -14,7 +14,9 @@ _wrapper hell_ of components surrounded by layers of `providers`, `consumers`, `
 
 These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
 
-- 
+## Selling point of Hooks
+- **you can extract stateful logic from a component**, so it can be tested independently and reused. 
+- **allows you to reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
 
 ## Summary
 
