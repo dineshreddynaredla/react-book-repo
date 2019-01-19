@@ -33,6 +33,12 @@ However, we found that class components can encourage unintentional patterns tha
 ## Hooks - approach
 Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
 
+## What is a hook?
+
+## Are there more than one Hook?
+
+## Can I create my own Hook?
+
 ## Let's code some Hooks
 
 Let's first create a a project using CRA, like so:
