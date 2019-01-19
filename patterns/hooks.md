@@ -20,7 +20,8 @@ These patterns require you to restructure your components when you use them, whi
 > Just create smaller components?
 
 In many cases it’s not possible to break these components into smaller ones because the stateful logic is all over the place. It’s also difficult to test them
-- classes confuse both people and machines, you have to understand how this works in JavaScript, you have to bind them to event handlers
+- classes confuse both people and machines, you have to understand how this works in JavaScript, you have to bind them to event handlers.
+The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers
 
 
 ## Selling point of Hooks
