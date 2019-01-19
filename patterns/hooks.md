@@ -33,6 +33,16 @@ However, we found that class components can encourage unintentional patterns tha
 ## Hooks - approach
 Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
 
+## Let's code some Hooks
+
+Let's first create a a project using CRA, like so:
+> npx create-react-app react-hooks-demo
+
+Ensure it's using React at least 16.7.0
+
+
+
+
 ## Summary
 
 ### Further reading
