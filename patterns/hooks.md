@@ -8,7 +8,12 @@ It's an upcoming feature, it's an alpha and still we can't wait to use it, so wh
 
 ## Problems Hooks are trying to address 
 -** “attach” reusable behavior to a component**, (for example, connecting it to a store)
-[render props](/patterns/render-props.md) and TODO link **higher order** components try to solve these
+[render props](/patterns/render-props.md) and TODO link **higher order** components try to solve these.
+Which leads to:
+_wrapper hell_ of components surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions
+
+These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
+
 - 
 
 ## Summary
