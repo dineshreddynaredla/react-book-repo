@@ -43,6 +43,7 @@
 ## PATTERNS
 
 * [Render props](patterns/render-props.md)
+* [Hooks](patterns/hooks.md)
 
 ## TESTING
 
