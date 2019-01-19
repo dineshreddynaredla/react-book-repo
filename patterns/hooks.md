@@ -21,7 +21,8 @@ These patterns require you to restructure your components when you use them, whi
 
 In many cases it’s not possible to break these components into smaller ones because the stateful logic is all over the place. It’s also difficult to test them
 - classes confuse both people and machines, you have to understand how this works in JavaScript, you have to bind them to event handlers.
-The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers
+The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable
 
 
 ## Selling point of Hooks
