@@ -20,7 +20,7 @@ These patterns require you to restructure your components when you use them, whi
 > Just create smaller components?
 
 In many cases it’s not possible to break these components into smaller ones because the stateful logic is all over the place. It’s also difficult to test them
-
+- classes confuse both people and machines, you have to understand how this works in JavaScript, you have to bind them to event handlers
 
 
 ## Selling point of Hooks
@@ -28,7 +28,7 @@ In many cases it’s not possible to break these components into smaller ones be
 - **allows you to reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
 
 ## Hooks - approach
-Hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
+Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
 
 ## Summary
 
