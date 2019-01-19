@@ -12,6 +12,10 @@ It's an upcoming feature, it's an alpha and still we can't wait to use it, so wh
 Which leads to:
 _wrapper hell_ of components surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions
 - complex components become hard to understand, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
+- life cycle methods does too many things, 
+ - components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. 
+ - same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
+
 
 These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
 
