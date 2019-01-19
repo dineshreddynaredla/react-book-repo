@@ -7,17 +7,21 @@ Hooks is the latest pattern and experimental feature that's better than sliced b
 It's an upcoming feature, it's an alpha and still we can't wait to use it, so why is that? 
 
 ## Problems Hooks are trying to address 
--** “attach” reusable behavior to a component**, (for example, connecting it to a store)
+- **attach” reusable behavior to a component**, (for example, connecting it to a store)
 [render props](/patterns/render-props.md) and TODO link **higher order** components try to solve these.
 Which leads to:
 _wrapper hell_ of components surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions
-- complex components become hard to understand, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
-- life cycle methods does too many things, 
+These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
+- **complex components become hard to understand**, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
+- **life cycle methods does too many things**, 
  - components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. 
  - same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
 
+> Just create smaller components?
 
-These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
+In many cases it’s not possible to break these components into smaller ones because the stateful logic is all over the place. It’s also difficult to test them
+
+
 
 ## Selling point of Hooks
 - **you can extract stateful logic from a component**, so it can be tested independently and reused. 
