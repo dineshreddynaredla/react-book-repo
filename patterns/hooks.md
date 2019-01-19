@@ -25,7 +25,8 @@ The distinction between function and class components in React and when to use e
 However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable
 
 
-## Selling point of Hooks
+### Selling point of Hooks
+- Hooks let you use more of React’s features without classes
 - **you can extract stateful logic from a component**, so it can be tested independently and reused. 
 - **allows you to reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
 
