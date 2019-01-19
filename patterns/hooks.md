@@ -11,6 +11,7 @@ It's an upcoming feature, it's an alpha and still we can't wait to use it, so wh
 [render props](/patterns/render-props.md) and TODO link **higher order** components try to solve these.
 Which leads to:
 _wrapper hell_ of components surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions
+- complex components become hard to understand, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
 
 These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
 
