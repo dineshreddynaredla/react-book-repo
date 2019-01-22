@@ -1,8 +1,12 @@
 # Hooks
 
-Hooks is the latest pattern and experimental feature that's better than sliced bread. Everyone used to go next over [Render props](/patterns/render-props.md) but now it's all hooks. 
+> Hooks is the latest pattern and experimental feature that's better than sliced bread ;). Everyone used to go nuts over [Render props](/patterns/render-props.md) but now it's all hooks. 
+Hooks are an upcoming feature that lets you use state and other React features without writing a class. They’re currently in React v16.8.0-alpha.0
 
-> Hooks are an upcoming feature that lets you use state and other React features without writing a class. They’re currently in React v16.8.0-alpha.0
+
+
+![](/assets/Screen Shot 2019-01-22 at 15.18.11.png)
+
 
 It's an upcoming feature, it's an alpha and still we can't wait to use it, so why is that? 
 
@@ -37,7 +41,7 @@ Hooks let you `split one component into smaller functions` based on what `pieces
 Let's try to answer that question by working ourselves through some of the Hooks offered to us. 
 
 ### First example - useState
-This Hook let use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
+This Hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
 
 ```js
 import { useState } from React;
