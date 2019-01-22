@@ -60,7 +60,16 @@ Ok we see that we use the Hook `useState` by invoking it and we invoke it like s
 
 > useState(0)
 
-This means we give it an initial value of 0.
+This means we give it an initial value of 0. What happens next is that we get an array back that we do a destructuring on. Let's examine that closer:
+> const [counter, setCounter] = useState(0);
+
+Ok, we name the first value in the array `counter` and the second value `setCounter`. The first value is the actual value that we can showcase and the second value `setCounter()` is a function that we can invoke and thereby change the value of `counter`. So in a sense, `setCounter(3)` is equivalent to writing:
+> this.setState({ counter: 3 })
+
+Just to ensure we understand how to use it fully let's create a few more states:
+
+```js
+``` 
 
 ## Are there more than one Hook?
 
