@@ -127,6 +127,9 @@ TODO, explain the life cycle of the effect more here
 ### Handling clean up
 TODO show how we can, and should clean up after our hook
 
+## Best practices DOs and DON'Ts
+TODO
+
 ## Can I create my own Hook?
 
 ## Let's code some Hooks
