@@ -124,6 +124,9 @@ As you can see above we have access to `props` as well as `state` and the DOM.
 
 TODO, explain the life cycle of the effect more here
 
+### Handling clean up
+TODO show how we can, and should clean up after our hook
+
 ## Can I create my own Hook?
 
 ## Let's code some Hooks
