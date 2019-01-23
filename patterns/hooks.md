@@ -92,7 +92,36 @@ const ProductList = () => {
 }
 ``` 
 
-## Are there more than one Hook?
+## Handling side-effects with a Hook
+The Effect hook is meant to be used to perform side effects like for example HTTP calls.
+It performs the same task as life cycle methods `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
+
+Here is how we can use it:
+```js
+const ProductList = () => {
+  const [products, setProducts] = useState([{ id: 1, name: 'Fortnite' }]);
+ const [cart, setCart] = useState([]);
+
+ useEffect(async() => {
+   const products = await api.getProducts();
+   setProducts(products);
+ })
+}
+```
+
+### Accessing the DOM tree
+Besides from doing HTTP calls we can use our Effect Hook to access the DOM tree. That would look like the following:
+```js
+const TitleHook = () => {
+  const [title, setTitle] = useState('no title');
+  
+  useEffect(() => {
+   document.title = `App name ${title} times`;
+  })
+}
+
+
+``` 
 
 ## Can I create my own Hook?
 
