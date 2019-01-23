@@ -119,8 +119,6 @@ const TitleHook = () => {
    document.title = `App name ${title} times`;
   })
 }
-
-
 ``` 
 
 ## Can I create my own Hook?
