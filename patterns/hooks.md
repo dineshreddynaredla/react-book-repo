@@ -120,6 +120,9 @@ const TitleHook = () => {
   })
 }
 ``` 
+As you can see above we have access to `props` as well as `state` and the DOM. 
+
+TODO, explain the life cycle of the effect more here
 
 ## Can I create my own Hook?
 
