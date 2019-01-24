@@ -1,9 +1,10 @@
 # React Hooks - best thing since sliced bread?
 
-> Hooks is the latest pattern and experimental feature that's better than sliced bread ;). Everyone used to go nuts over [Render props](/patterns/render-props.md) but now it's all hooks. 
-Hooks are an upcoming feature that lets you use state and other React features without writing a class. They’re currently in React v16.8.0-alpha.0
+> Hooks are an upcoming feature that lets you use state and other React features without writing a class component - functions FTW. 
 
+Hooks is the latest pattern and experimental feature that's better than sliced bread ;). Everyone used to go nuts over [Render props](/patterns/render-props.md) but now it's all hooks. 
 
+They’re currently in React v16.8.0-alpha.0
 
 ![](/assets/Screen Shot 2019-01-22 at 15.18.11.png)
 
