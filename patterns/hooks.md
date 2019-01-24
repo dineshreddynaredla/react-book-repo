@@ -112,14 +112,29 @@ const ProductList = () => {
 ### Life cycle
 Hooks replaces the needs for many life cycle methods in general so it's important for us to understand which ones. 
 
+Let's discuss Effect Hooks in particular and their life cycle though.
+
 The following is known about it's life cycle:
 
 - By default, React runs the effects after every render
 - Our effect is being run after React has flushed changes to the DOM — including the first render
 
-
 ### Accessing the DOM tree
-Besides from doing HTTP calls we can use our Effect Hook to access the DOM tree. That would look like the following:
+Let's talk about when we access the DOM tree, to perform a side effect. If we are not using Hooks we would be doing so in the methods `componentDidMount` and `componentDidUpdate`. The reason is we cant use the `render` method cause then it would happen to early.
+
+Let's show how we would use life cycle methods to update the DOM:
+```js
+componentDidMount() {
+  document.title = 'Component started';
+}
+
+componentDidUpdate() {
+  document.title = 'Component updated'
+}
+```
+We see that we can do so using two different life cycle methods.
+
+Accessing the DOM tree with an Effects Hook would look like the following:
 ```js
 const TitleHook = () => {
   const [title, setTitle] = useState('no title');
@@ -128,10 +143,13 @@ const TitleHook = () => {
    document.title = `App name ${title} times`;
   })
 }
-``` 
+
 As you can see above we have access to `props` as well as `state` and the DOM. 
 
-TODO, explain the life cycle of the effect more here
+Let's remind ourselves what we know about our Effect Hook namely this:
+> Our effect is being run after React has flushed changes to the DOM — including the first render
+
+That means that two life cycle methods can be replaced by one effect.
 
 ### Handling set up/ tear down
 Let's now look at another aspect of the `useEffect` hook namely that we can use it to clean up after ourselves. The idea for that is the following:
@@ -168,7 +186,6 @@ useEffect(() => {
   }
 })
 ```
-
 
 ## Best practices DOs and DON'Ts
 TODO
