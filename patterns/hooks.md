@@ -4,7 +4,7 @@
 
 Hooks is the latest pattern and experimental feature that's better than sliced bread ;). Everyone used to go nuts over [Render props](/patterns/render-props.md) but now it's all hooks. 
 
-They’re currently in React v16.8.0-alpha.0
+They’re currently in React v16.8.0-alpha.0 so you can try them out already :)
 
 ![](/assets/Screen Shot 2019-01-22 at 15.18.11.png)
 
