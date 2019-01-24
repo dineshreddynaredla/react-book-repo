@@ -115,7 +115,7 @@ Hooks replaces the needs for many life cycle methods in general so it's importan
 The following is known about it's life cycle:
 
 - By default, React runs the effects after every render
-- Our effect is being run after React has flushed changes to the DOM
+- Our effect is being run after React has flushed changes to the DOM — including the first render
 
 
 ### Accessing the DOM tree
