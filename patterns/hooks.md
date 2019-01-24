@@ -272,7 +272,7 @@ const AdminPage = () => {
   )
 }
 ```
-What we are doing above is to read out the flags from `localStorage` and then we show them all in the `render` method. While rendering them out, flag by flag, we also hook-up ( I know we are talking about Hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us 
+What we are doing above is to read out the flags from `localStorage` and then we show them all in the `render` method. While rendering them out, flag by flag, we also hook-up ( I know we are talking about Hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us change a specific flag. Inside of `toggleFlag` we not only set the new flag value but we also ensure our `flags` have the latest updated value. 
 
 ## Summary
 In this article we have tried to explain the background and the reason Hooks where created and what problems it was looking to address and hopefully fix.
