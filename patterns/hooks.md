@@ -22,19 +22,20 @@ Like the whole wrapping itself wasn't bad we need to restructure our components 
 - **life cycle methods does too many things**, 
  components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. Same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
 
-
-> Just create smaller components?
-
-In many cases it’s not possible to break these components into smaller ones because the stateful logic is all over the place. It’s also difficult to test them
-- classes confuse both people and machines, you have to understand how this works in JavaScript, you have to bind them to event handlers.
-The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
-However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable
+### Just create smaller components?
+ 
+In many cases it’s not possible becuase: 
+- **difficult to test**, stateful logic is all over the place, thus making it difficult to test
+- **classes confuse both people and machines**, you have to understand how this works in JavaScript, you have to bind them to event handlers.
+The distinction between function and class components in React and when to use each one _leads to disagreements_ even between experienced React developers.
+- **minify issues**, classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable
 
 
 ### Selling point of Hooks
-- Hooks let you use more of React’s features without classes
-- **you can extract stateful logic from a component**, so it can be tested independently and reused. 
-- **allows you to reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
+Hooks let you use more of React’s features **without classes**. Not only that we are able to create Hooks that will allow you to:
+
+- **extract stateful logic from a component**, so it can be tested independently and reused. 
+- **reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
 
 ## Hooks - approach
 Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
@@ -65,7 +66,7 @@ Ok we see that we use the Hook `useState` by invoking it and we invoke it like s
 This means we give it an initial value of 0. What happens next is that we get an array back that we do a destructuring on. Let's examine that closer:
 > const [counter, setCounter] = useState(0);
 
-Ok, we name the first value in the array `counter` and the second value `setCounter`. The first value is the actual value that we can showcase and the second value `setCounter()` is a function that we can invoke and thereby change the value of `counter`. So in a sense, `setCounter(3)` is equivalent to writing:
+Ok, we name the first value in the array `counter` and the second value `setCounter`. The first value is the actual value that we can showcase in our `render` method. The second value `setCounter()` is a function that we can invoke and thereby change the value of `counter`. So in a sense, `setCounter(3)` is equivalent to writing:
 > this.setState({ counter: 3 })
 
 Just to ensure we understand how to use it fully let's create a few more states:
@@ -163,9 +164,9 @@ useEffect(() => {
  }
 });
 ```
-Above we see that inside of our `useEffect` function we perform our side effect as usual but we can also set things up. We also see that we return a function, this function will be invoked the last thing that happens. 
+Above we see that inside of our `useEffect` function we perform our side effect as usual but we can also set things up. We also see that we return a function. Said function will be invoked the last thing that happens. 
 
-What we have here is set up and tear down. So how can we use this to our advantage? Let's look at a bit contrived example first so we get the idea:
+What we have here is _set up_ and _tear down_. So how can we use this to our advantage? Let's look at a bit contrived example first so we get the idea:
 
 ```
 useEffect(() => {
@@ -179,6 +180,10 @@ useEffect(() => {
 The above demonstrates the whole set up and tear down scenario but as I said it is a bit contrived. You are more likely to do something else like setting up a socket connect for example, e.g some kind of subscription, like so:
 
 ```
+onMessage = (message) => {
+ // do something with message
+}
+
 useEffect(() => {
   chatRoom.subscribe('roomId', onMessage)
   
