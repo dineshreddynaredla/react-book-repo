@@ -204,20 +204,70 @@ You could be creating things like:
 
  - **a modal**, this has a state that says wether it shows or not and will need to manipulate the DOM to add the modal itself and it will also need to clean up after itself when the modal closes
 - **a feature flag**, feature flag will have a state where it says wether something should be shown or not, it will need to get its state initially from somewhere like `localStorage` and/or over HTTP
-- **a cart**, a cart in an ecommerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as backend endpoint. 
+- **a cart**, a cart in an e-commerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as backend endpoint. 
 
+### Feature flag
+Let's try to sketch up our Hook and how it should be behaving:
 
-## Let's code some Hooks
+```js
+import { useState } from 'react';
 
-Let's first create a a project using CRA, like so:
-> npx create-react-app react-hooks-demo
+function useFeatureFlag(flag) {
+  const enabled = useState(Boolean(localStorage.getItem(flag)));
 
-Ensure it's using React at least 16.7.0
+  const setFlag = (status) => {
+    const flags = localStorage.getItem('flags') | {};
+    
+    localStorage.setItem('flags', { ...flags, flag: status }
+   );
+  }
+  
+ return [enabled, setFlag]; 
+}
+```
 
+Now we have create our custom Hook, let's take it for a spin:
+```
+const MyComponent = () => {
+  const [showExperiment1] = useFeatureFlag('experiment1');
+  
+  return (
+    <div>Always show this</div>
+    { showExperiment1 && 
+    <div>Show this if feature flag is on</div>
+    }
+  )
+}
+```
+Now, as you saw in our custom hook we are exposing two things, the state and a function that lets us change the state. However in `MyComponent` we are only taking advantage of the `state`. Well, that makes kind of sense right? I mean the aim was to only show a certain region in a component if it was true. 
 
+The million dollar question is when would we use `setFlag` to change the value? Glad you asked ;) Imagine you have an admin page. On that admin page it would be neat if we could list all the flags and toggle them any way we want to. Let's write such a component:
 
+```js
+const AdminPage = () => {
+  const flags = localStorage.getItem('flags') | {};
+  
+  const toggleFlag = (f) => {
+    const [f, setFlag] = useFeatureFlag(flag);
+    setFlag(!f); 
+  }
+  
+  return (
+    <React.Fragment>
+    {Object.keys(flags).map(key => <div><button onClick={() => toggleFlag(flag)}>{flag}</button></div>)}
+    </React.Fragment>
+  )
+}
+
+```
 
 ## Summary
+In this article we have tried to explain the background and the reason Hooks where created and what problems it was looking to address and hopefully fix.
+
+We have learned the following, hopefully;):
+- useState, is a Hook we can use to persist state in a functional component
+- useEffect is also a Hook but for side effects
+- we can use one or both of the mentioned Hook types and create really cool and reusable functionality, so go out there, be awesome and create your own hooks.
 
 ### Further reading
 - [Hooks documentation](https://reactjs.org/docs/hooks-overview.html)
