@@ -203,9 +203,11 @@ Let's look at some interesting candidates and see how we can use Hooks to build 
 
 You could be creating things like:
 
- - **a modal**, this has a state that says wether it shows or not and will need to manipulate the DOM to add the modal itself and it will also need to clean up after itself when the modal closes
-- **a feature flag**, feature flag will have a state where it says wether something should be shown or not, it will need to get its state initially from somewhere like `localStorage` and/or over HTTP
-- **a cart**, a cart in an e-commerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as backend endpoint. 
+ * **a modal**, this has a state that says wether it shows or not and will need to manipulate the DOM to add the modal itself and it will also need to clean up after itself when the modal closes
+ 
+* **a feature flag**, feature flag will have a state where it says wether something should be shown or not, it will need to get its state initially from somewhere like `localStorage` and/or over HTTP
+
+* **a cart**, a cart in an e-commerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as backend endpoint. 
 
 ### Feature flag
 Let's try to sketch up our Hook and how it should be behaving:
@@ -245,12 +247,22 @@ Now, as you saw in our custom hook we are exposing two things, the state and a f
 The million dollar question is when would we use `setFlag` to change the value? Glad you asked ;) Imagine you have an admin page. On that admin page it would be neat if we could list all the flags and toggle them any way we want to. Let's write such a component:
 
 ```js
+const useFlags = () => {
+  let flags = localStorage.getItem('flags') | {};
+  const updateFlags = (flags) => {
+    flags = localStorage.getItem('flags') | {};
+  }
+  
+  return [flags, setFlags];   
+}
+
 const AdminPage = () => {
-  const flags = localStorage.getItem('flags') | {};
+  const [flags, updateFlags] = useFlags();
   
   const toggleFlag = (f) => {
     const [f, setFlag] = useFeatureFlag(flag);
     setFlag(!f); 
+    updateFlags();  
   }
   
   return (
@@ -259,8 +271,8 @@ const AdminPage = () => {
     </React.Fragment>
   )
 }
-
 ```
+What we are doing above is to read out the flags from `localStorage` and then we show them all in the `render` method. While rendering them out, flag by flag, we also hook-up ( I know we are talking about Hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us 
 
 ## Summary
 In this article we have tried to explain the background and the reason Hooks where created and what problems it was looking to address and hopefully fix.
