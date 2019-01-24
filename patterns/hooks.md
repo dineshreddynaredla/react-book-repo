@@ -109,6 +109,15 @@ const ProductList = () => {
 }
 ```
 
+### Life cycle
+Hooks replaces the needs for many life cycle methods in general so it's important for us to understand which ones. 
+
+The following is known about it's life cycle:
+
+- By default, React runs the effects after every render
+- Our effect is being run after React has flushed changes to the DOM
+
+
 ### Accessing the DOM tree
 Besides from doing HTTP calls we can use our Effect Hook to access the DOM tree. That would look like the following:
 ```js
@@ -124,8 +133,42 @@ As you can see above we have access to `props` as well as `state` and the DOM.
 
 TODO, explain the life cycle of the effect more here
 
-### Handling clean up
-TODO show how we can, and should clean up after our hook
+### Handling set up/ tear down
+Let's now look at another aspect of the `useEffect` hook namely that we can use it to clean up after ourselves. The idea for that is the following:
+```
+useEffect(() => {
+ // set up 
+ // perform side effect
+ return () => {
+   // perform clean up here
+ }
+});
+```
+Above we see that inside of our `useEffect` function we perform our side effect as usual but we can also set things up. We also see that we return a function, this function will be invoked the last thing that happens. 
+
+What we have here is set up and tear down. So how can we use this to our advantage? Let's look at a bit contrived example first so we get the idea:
+
+```
+useEffect(() => {
+  const id = setInterval(() => console.log('logging'));
+  
+  return () => {
+    clearInterval(id);
+  }
+})
+```
+The above demonstrates the whole set up and tear down scenario but as I said it is a bit contrived. You are more likely to do something else like setting up a socket connect for example, e.g some kind of subscription, like so:
+
+```
+useEffect(() => {
+  chatRoom.subscribe('roomId', onMessage)
+  
+  return () => {
+    chatRoom.unsubscribe('roomId');
+  }
+})
+```
+
 
 ## Best practices DOs and DON'Ts
 TODO
