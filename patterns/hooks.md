@@ -193,10 +193,19 @@ useEffect(() => {
 })
 ```
 
-## Best practices DOs and DON'Ts
-TODO
-
 ## Can I create my own Hook?
+Yes you can. With `useState` and `useEffect` the world is completely open. You can create whatever Hook you need. 
+
+The mindset I want you to have is the following. Will my component have a state? Will I need to do a DOM manipulation or maybe an AJAX call? Most of all, is it something usable that more than one component can benefit from? If there are several yes here you can use a Hook to create it.
+
+Let's look at some interesting candidates and see how we can use Hooks to build them out:
+
+You could be creating things like:
+
+ - **a modal**, this has a state that says wether it shows or not and will need to manipulate the DOM to add the modal itself and it will also need to clean up after itself when the modal closes
+- **a feature flag**, feature flag will have a state where it says wether something should be shown or not, it will need to get its state initially from somewhere like `localStorage` and/or over HTTP
+- **a cart**, a cart in an ecommerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as backend endpoint. 
+
 
 ## Let's code some Hooks
 
