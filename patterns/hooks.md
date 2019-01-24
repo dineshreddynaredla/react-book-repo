@@ -12,15 +12,16 @@ They’re currently in React v16.8.0-alpha.0 so you can try them out already :)
 It's an upcoming feature, it's an alpha and still we can't wait to use it, so why is that? 
 
 ## Problems Hooks are trying to address 
-- **attach” reusable behavior to a component**, (for example, connecting it to a store)
-[render props](/patterns/render-props.md) and TODO link **higher order** components try to solve these.
-Which leads to:
-_wrapper hell_ of components surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions
-These patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow.
-- **complex components become hard to understand**, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
+There are many problems Hooks are trying to address and solve. Here is a list covering some of them:
+
+- **wrapper hell**, we all know the so called _wrapper hell_. Components are surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions, exhausted yet? ;)
+
+Like the whole wrapping itself wasn't bad we need to restructure our components which is tedious but most of all we loose track over how the data flows.
+
+- **increasing complexity**, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
 - **life cycle methods does too many things**, 
- - components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. 
- - same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
+ components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. Same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
+
 
 > Just create smaller components?
 
@@ -76,7 +77,6 @@ const ProductList = () => {
  const [products, setProducts] = useState([{ id: 1, name: 'Fortnite' }]);
  const [cart, setCart] = useState([]);
 
- 
  const addToCart = (p) => {
    const newCartItem = { ...p};
    setCart([...cart, newCartItem]);
