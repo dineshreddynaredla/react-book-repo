@@ -253,7 +253,7 @@ const useFlags = () => {
     flags = localStorage.getItem('flags') | {};
   }
   
-  return [flags, setFlags];   
+  return [flags, updateFlags];   
 }
 
 const AdminPage = () => {
