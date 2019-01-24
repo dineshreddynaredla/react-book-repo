@@ -145,6 +145,7 @@ const TitleHook = () => {
    document.title = `App name ${title} times`;
   })
 }
+```
 
 As you can see above we have access to `props` as well as `state` and the DOM. 
 
