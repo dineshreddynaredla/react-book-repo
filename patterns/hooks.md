@@ -56,9 +56,9 @@ We will not be covering `Additional Hooks` at all as this article would be way t
 - **useReducer**, alternative to `useState`, it accepts a reducer and returns a pair with the current state and a `dispatch` function
 - **useCallback**, will return a memoized version of the callback that only changes if one of the inputs has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders
 - **useMemo**, passes a _create_ function and an array of inputs. `useMemo` will only recompute the memoized value when one of the inputs has changed. This optimization helps to avoid expensive calculations on every render.
-- useRef, returns a mutable ref object whose `.current` property is initialized to the passed argument (initialValue). The returned object _will persist for the full lifetime of the component_
-- useImperativeHandle
-- useLayoutEffect
+- **useRef**, returns a mutable ref object whose `.current` property is initialized to the passed argument (initialValue). The returned object _will persist for the full lifetime of the component_
+- **useImperativeHandle**, customizes the instance value that is exposed to parent components when using ref 
+- useLayoutEffect, the signature is identical to useEffect, but it fires _synchronously_ after all DOM mutations. Use this to read layout from the DOM and synchronously re-render
 - useDebugValue
 
 
