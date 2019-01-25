@@ -23,7 +23,8 @@ Like the whole wrapping itself wasn't bad enough we need to restructure our comp
 - **life cycle methods does too many things**, 
  components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. Same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
 
-### Just create smaller components? 
+> Just create smaller components? 
+
 In many cases it’s not possible because: 
 - **difficult to test**, stateful logic is all over the place, thus making it difficult to test
 - **classes confuse both people and machines**, you have to understand how `this` works in JavaScript, you have to bind them to event handlers etc.
@@ -50,6 +51,16 @@ When the provider updates, this Hook will trigger a rerender with the latest con
 We will focus on `useState` and `useEffect` in this article.
 
 ### Additional Hooks
+We will not be covering `Additional Hooks` at all as this article would be way too long but you are encouraged to read more about them on [Additional Hooks](https://reactjs.org/docs/hooks-reference.html#additional-hooks)
+
+- useReducer, alternative to `useState`, it accepts a reducer and returns a pair with the current state and a `dispatch` function
+- useCallback
+- useMemo
+- useRef
+- useImperativeHandle
+- useLayoutEffect
+- useDebugValue
+
 
 ### First example - useState
 This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
