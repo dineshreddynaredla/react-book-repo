@@ -63,9 +63,8 @@ We will not be covering `Additional Hooks` at all as this article would be way t
 
 As you can see above I've pretty much borrowed the explanation for each of these `Additional Hooks` from the documentation. The aim was merely to describe what exist, give a one liner on each of them and urge you to explore the documentation once you feel you've mastered the `Basic Hooks`.
 
-
 ### First example - useState
-This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
+This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a `class` for that. Not anymore. Let's show what using `useState` hook looks like:
 
 ```js
 import { useState } from React;
@@ -114,6 +113,7 @@ const ProductList = () => {
  )
 }
 ``` 
+Above we are creating the states `products` and `cart` and in doing so we also get their respective change funciton `setProducts` and `setCart`. We can see in the markup we invoke the method `addToCart()` if clicking on any of the items in our `products` list. This leads to the invocation of `setCart`, which leads to the selected product ot be added as a cart item in `cart`. This is a simple example but it really showcases the usage of `setState` hook.
 
 ## Handling side-effects with a Hook
 The Effect hook is meant to be used to perform side effects like for example HTTP calls.
