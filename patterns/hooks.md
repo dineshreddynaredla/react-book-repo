@@ -59,7 +59,9 @@ We will not be covering `Additional Hooks` at all as this article would be way t
 - **useRef**, returns a mutable ref object whose `.current` property is initialized to the passed argument (initialValue). The returned object _will persist for the full lifetime of the component_
 - **useImperativeHandle**, customizes the instance value that is exposed to parent components when using ref 
 - useLayoutEffect, the signature is identical to useEffect, but it fires _synchronously_ after all DOM mutations. Use this to read layout from the DOM and synchronously re-render
-- useDebugValue
+- **useDebugValue**, can be used to display a label for custom hooks in React DevTools
+
+As you can see above I've pretty much borrowed the explanation for each of these `Additional Hooks` from the documentation. The aim was merely to describe what exist, give a one liner on each of them and urge you to explore the documentation once you feel you've mastered the `Basic Hooks`.
 
 
 ### First example - useState
