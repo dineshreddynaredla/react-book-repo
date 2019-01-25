@@ -2,16 +2,17 @@
 
 > Hooks are an upcoming feature that lets you use state and other React features without writing a class component - functions FTW. 
 
-Hooks is the latest pattern and experimental feature that's better than sliced bread ;). Everyone used to go nuts over [Render props](/patterns/render-props.md) but now it's all hooks. 
+Hooks is the latest pattern and an experimental feature that's supposedly better than sliced bread. Everyone used to go nuts over [Render props](/patterns/render-props.md) but now it's all hooks. 
 
-They’re currently in React v16.8.0-alpha.0 so you can try them out already :)
+Hooks are currently in React v16.8.0-alpha.0 so you can try them out already :)
 
 ![](/assets/Screen Shot 2019-01-22 at 15.18.11.png)
 
-
-It's an upcoming feature, it's an alpha and still we can't wait to use it, so why is that? 
-
 ## Problems Hooks are trying to address 
+Every time something new comes out we get excited. We hope that this will finally be the solution to all our problems, so we use it, again and again and again. It's ketchup, it's the best thing since sliced bread. We've all been guilty of doing this at one time of another, abusing a pattern or paradigm and yes there has always been some truth to it that the used pattern has been limited. 
+
+Below I will try to lay out all the different pain points that makes us see Hooks as this great thing. A word of caution though, even Hooks will have drawbacks, so use it where it makes sense. But now back to some bashing and raving how they way we used to build React apps were horrible;)
+
 There are many problems Hooks are trying to address and solve. Here is a list covering some of them:
 
 - **wrapper hell**, we all know the so called _wrapper hell_. Components are surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions, exhausted yet? ;)
