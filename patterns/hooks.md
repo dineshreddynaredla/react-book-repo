@@ -9,26 +9,25 @@ Hooks are currently in React v16.8.0-alpha.0 so you can try them out already :)
 ![](/assets/Screen Shot 2019-01-22 at 15.18.11.png)
 
 ## Problems Hooks are trying to address 
-Every time something new comes out we get excited. We hope that this will finally be the solution to all our problems, so we use it, again and again and again. It's ketchup, it's the best thing since sliced bread. We've all been guilty of doing this at one time of another, abusing a pattern or paradigm and yes there has always been some truth to it that the used pattern has been limited. 
+Every time something new comes out we get excited. It's ketchup, it's the best thing since sliced bread and so on. We hope that this will finally be the solution to all our problems, so we use it, again and again and again.  We've all been guilty of doing this at one time of another, abusing a pattern or paradigm and yes there has always been some truth to it that the used pattern has been limited. 
 
-Below I will try to lay out all the different pain points that makes us see Hooks as this great thing. A word of caution though, even Hooks will have drawbacks, so use it where it makes sense. But now back to some bashing and raving how they way we used to build React apps were horrible;)
+Below I will try to lay out all the different pain points that makes us see Hooks as this new great thing. A word of caution though, even Hooks will have drawbacks, so use it where it makes sense. But now back to some bashing and raving how the way we used to build React apps were horrible;)
 
-There are many problems Hooks are trying to address and solve. Here is a list covering some of them:
+There are many problems Hooks are trying to address and solve. Here is a list of offenders:
 
 - **wrapper hell**, we all know the so called _wrapper hell_. Components are surrounded by layers of `providers`, `consumers`, `higher-order components`, `render props`, and other abstractions, exhausted yet? ;)
 
-Like the whole wrapping itself wasn't bad we need to restructure our components which is tedious but most of all we loose track over how the data flows.
+Like the whole wrapping itself wasn't bad enough we need to restructure our components which is tedious, but most of all we loose track over how the data flows.
 
 - **increasing complexity**, something that starts out small becomes large and complex over time, especially as we add lifecycle methods
 - **life cycle methods does too many things**, 
  components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. Same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`
 
-### Just create smaller components?
- 
-In many cases it’s not possible becuase: 
+### Just create smaller components? 
+In many cases it’s not possible because: 
 - **difficult to test**, stateful logic is all over the place, thus making it difficult to test
-- **classes confuse both people and machines**, you have to understand how this works in JavaScript, you have to bind them to event handlers.
-The distinction between function and class components in React and when to use each one _leads to disagreements_ even between experienced React developers.
+- **classes confuse both people and machines**, you have to understand how `this` works in JavaScript, you have to bind them to event handlers etc.
+The distinction between function and class components in React and when to use each one _leads to disagreements_ and well all know how we can be when we fight for our opinion, spaces vs tabs anyone :)?.
 - **minify issues**, classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable
 
 
