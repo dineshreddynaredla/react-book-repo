@@ -36,13 +36,14 @@ Hooks let you use more of React’s features **without classes**. Not only that,
 - **extract stateful logic from a component**, so it can be tested independently and reused. 
 - **reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
 
-## Hooks - approach
-Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
-
 ## What is a hook?
-Let's try to answer that question by working ourselves through some of the Hooks offered to us. First let's have an overview of the different Hooks available to use:
+Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.
+
+Let's have an overview of the different Hooks available to use:
 - **useState**, this is a hook that allows you to use state inside of function component
 - **useEffect**, this is a hook that allows you to perform side effect in such a way that it replaces several life cycle methods
+
+Let's try to answer that question by working ourselves through some of the Hooks offered to us. 
 
 ### First example - useState
 This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
