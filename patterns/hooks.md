@@ -53,10 +53,10 @@ We will focus on `useState` and `useEffect` in this article.
 ### Additional Hooks
 We will not be covering `Additional Hooks` at all as this article would be way too long but you are encouraged to read more about them on [Additional Hooks](https://reactjs.org/docs/hooks-reference.html#additional-hooks)
 
-- useReducer, alternative to `useState`, it accepts a reducer and returns a pair with the current state and a `dispatch` function
-- useCallback
-- useMemo
-- useRef
+- **useReducer**, alternative to `useState`, it accepts a reducer and returns a pair with the current state and a `dispatch` function
+- **useCallback**, will return a memoized version of the callback that only changes if one of the inputs has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders
+- **useMemo**, passes a _create_ function and an array of inputs. `useMemo` will only recompute the memoized value when one of the inputs has changed. This optimization helps to avoid expensive calculations on every render.
+- useRef, returns a mutable ref object whose `.current` property is initialized to the passed argument (initialValue). The returned object _will persist for the full lifetime of the component_
 - useImperativeHandle
 - useLayoutEffect
 - useDebugValue
