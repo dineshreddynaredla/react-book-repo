@@ -39,9 +39,11 @@ Hooks let you use more of React’s features **without classes**. Not only that,
 ## What is a hook?
 Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.
 
-Let's have an overview of the different Hooks available to use:
+Let's have an overview of the different Hooks available to use. Hooks are divided into `Basic Hooks` and `Additional Hooks`. Let's list the `Basic Hooks` first and mention briefly what their role is:
+
 - **useState**, this is a hook that allows you to use state inside of function component
 - **useEffect**, this is a hook that allows you to perform side effect in such a way that it replaces several life cycle methods
+- useContext
 
 Let's try to answer that question by working ourselves through some of the Hooks offered to us. 
 
