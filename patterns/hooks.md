@@ -30,9 +30,8 @@ In many cases it’s not possible because:
 The distinction between function and class components in React and when to use each one _leads to disagreements_ and well all know how we can be when we fight for our opinion, spaces vs tabs anyone :)?.
 - **minify issues**, classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable. Some of you might love classes and some of you might think that functions is the only way. Regardless of which we can only use certain features in React with classes and if it causes these minify issues we must find a better way.
 
-
 ### Selling point of Hooks
-Hooks let you use more of React’s features **without classes**. Not only that we are able to create Hooks that will allow you to:
+Hooks let you use more of React’s features **without classes**. Not only that, we are able to create Hooks that will allow you to:
 
 - **extract stateful logic from a component**, so it can be tested independently and reused. 
 - **reuse stateful logic**, without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
@@ -41,7 +40,9 @@ Hooks let you use more of React’s features **without classes**. Not only that 
 Hooks let you `split one component into smaller functions` based on what `pieces are related` (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods
 
 ## What is a hook?
-Let's try to answer that question by working ourselves through some of the Hooks offered to us. 
+Let's try to answer that question by working ourselves through some of the Hooks offered to us. First let's have an overview of the different Hooks available to use:
+- useState, this is a hook that allows you to use state inside of function component
+- useEffect, this is a hook that allows you to perform side effect in such a way that it replaces several life cycle methods
 
 ### First example - useState
 This Hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
