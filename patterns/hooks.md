@@ -41,11 +41,15 @@ Hooks let you `split one component into smaller functions` based on what `pieces
 
 Let's have an overview of the different Hooks available to use. Hooks are divided into `Basic Hooks` and `Additional Hooks`. Let's list the `Basic Hooks` first and mention briefly what their role is:
 
+### Basic Hooks
 - **useState**, this is a hook that allows you to use state inside of function component
 - **useEffect**, this is a hook that allows you to perform side effect in such a way that it replaces several life cycle methods
-- useContext
+- **useContext**, accepts a context object (the value returned from React.createContext) and returns the current context value, as given by the nearest context provider for the given context.
+When the provider updates, this Hook will trigger a rerender with the latest context value.
 
-Let's try to answer that question by working ourselves through some of the Hooks offered to us. 
+We will focus on `useState` and `useEffect` in this article.
+
+### Additional Hooks
 
 ### First example - useState
 This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a class for that. Not anymore. Let's show what using `useState` Hook looks like:
