@@ -28,7 +28,7 @@ In many cases it’s not possible because:
 - **difficult to test**, stateful logic is all over the place, thus making it difficult to test
 - **classes confuse both people and machines**, you have to understand how `this` works in JavaScript, you have to bind them to event handlers etc.
 The distinction between function and class components in React and when to use each one _leads to disagreements_ and well all know how we can be when we fight for our opinion, spaces vs tabs anyone :)?.
-- **minify issues**, classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable
+- **minify issues**, classes present issues for today’s tools, too. For example, classes don’t minify very well, and they make hot reloading flaky and unreliable. Some of you might love classes and some of you might think that functions is the only way. Regardless of which we can only use certain features in React with classes and if it causes these minify issues we must find a better way.
 
 
 ### Selling point of Hooks
