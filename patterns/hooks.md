@@ -190,8 +190,8 @@ Ok, a lot of interesting things was happening here. Let's start by looking at ou
 useEffect(() => {
     console.log('use effect');
     fetchData();
-    fetchProduct(id);
-  }, [id]);
+    fetchProduct(selected);
+  }, [selected]);
 ```
 What we are seeing above is us calling `fetchData` and `fetchProduct`. Both these methods calls methods marked by `async`. Why can't we just make the calling function in `useEffect` async, well that's a limitation of hooks unfortunately. 
 
