@@ -184,6 +184,16 @@ const ProductList = () => {
 export default ProductList;
 ```
 
+Ok, a lot of interesting things was happening here. Let's start by looking at our usage of `useEffect`:
+```
+useEffect(() => {
+    console.log('use effect');
+    fetchData();
+    fetchProduct(id);
+  }, [id]);
+```
+
+
 ### Life cycle
 Hooks replaces the needs for many life cycle methods in general so it's important for us to understand which ones. 
 
