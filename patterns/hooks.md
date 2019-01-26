@@ -64,20 +64,34 @@ We will not be covering `Additional Hooks` at all as this article would be way t
 As you can see above I've pretty much borrowed the explanation for each of these `Additional Hooks` from the documentation. The aim was merely to describe what exist, give a one liner on each of them and urge you to explore the documentation once you feel you've mastered the `Basic Hooks`.
 
 ### First example - useState
-This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a `class` for that. Not anymore. Let's show what using `useState` hook looks like:
+This hook let's us use state inside of a function component. Yep I got your attention now right? Usually that's not possible and we need to use a `class` for that. Not anymore. Let's show what using `useState` hook looks like. We need to do two things to get started with hooks:
+- scaffold a project using Create React App
+- upgrade `react` and `react-dom`
+
+The first one we will solve by typing:
+
+> npx create-react-app hooks-demo
+
+next we need to upgrade `react` and `react-dom` so they are using the experimental version of React where hooks are included:
+
+> yarn add react@next react-dom@next
+
+Now we are good to go:
 
 ```js
-import { useState } from React;
+import React, { useState } from 'react';
 
 const Counter = () => {
- const [counter, setCounter] = useState(0);
- 
- return (
-  <div>
-    <button onClick={setCounter(count + 1)} >Increment</button>
-  </div>
- )
+  const [counter, setCounter] = useState(0);
+  return (
+    <div>
+      {counter}
+      <button onClick={() => setCounter(counter + 1)} >Increment</button>
+    </div>
+  )
 }
+
+export default Counter;
 ```
 Ok we see that we use the Hook `useState` by invoking it and we invoke it like so:
 
