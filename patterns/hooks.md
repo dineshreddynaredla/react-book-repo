@@ -176,7 +176,7 @@ Let's remind ourselves what we know about our Effect Hook namely this:
 That means that two life cycle methods can be replaced by one effect.
 
 ### Handling set up/ tear down
-Let's now look at another aspect of the `useEffect` hook namely that we can use it to clean up after ourselves. The idea for that is the following:
+Let's now look at another aspect of the `useEffect` hook namely that we can, and we should, clean up after ourselves. The idea for that is the following:
 ```
 useEffect(() => {
  // set up 
@@ -186,9 +186,9 @@ useEffect(() => {
  }
 });
 ```
-Above we see that inside of our `useEffect` function we perform our side effect as usual but we can also set things up. We also see that we return a function. Said function will be invoked the last thing that happens. 
+Above we see that inside of our `useEffect()` function we perform our side effect as usual, but we can also set things up. We also see that we return a function. Said function will be invoked the last thing that happens. 
 
-What we have here is _set up_ and _tear down_. So how can we use this to our advantage? Let's look at a bit contrived example first so we get the idea:
+What we have here is _set up_ and _tear down_. So how can we use this to our advantage? Let's look at a bit of a contrived example so we get the idea:
 
 ```
 useEffect(() => {
@@ -199,7 +199,7 @@ useEffect(() => {
   }
 })
 ```
-The above demonstrates the whole set up and tear down scenario but as I said it is a bit contrived. You are more likely to do something else like setting up a socket connect for example, e.g some kind of subscription, like so:
+The above demonstrates the whole _set up_ and _tear down_ scenario but as I said it is a bit contrived. You are more likely to do something else like setting up a socket connection for example, e.g some kind of subscription, like the below:
 
 ```
 onMessage = (message) => {
@@ -216,22 +216,22 @@ useEffect(() => {
 ```
 
 ## Can I create my own Hook?
-Yes you can. With `useState` and `useEffect` the world is completely open. You can create whatever Hook you need. 
+Yes you can. With `useState` and `useEffect` the world is completely open. You can create whatever hook you need. 
 
-The mindset I want you to have is the following. Will my component have a state? Will I need to do a DOM manipulation or maybe an AJAX call? Most of all, is it something usable that more than one component can benefit from? If there are several yes here you can use a Hook to create it.
+Ask yourself the following questions; Will my component have a state? Will I need to do a DOM manipulation or maybe an AJAX call? Most of all, is it something usable that more than one component can benefit from? If there are several _yes_ here you can use a hook to create it.
 
-Let's look at some interesting candidates and see how we can use Hooks to build them out:
+Let's look at some interesting candidates and see how we can use hooks to build them out:
 
 You could be creating things like:
 
- * **a modal**, this has a state that says wether it shows or not and will need to manipulate the DOM to add the modal itself and it will also need to clean up after itself when the modal closes
+ * **a modal**, this has a state that says wether it shows or not and we will need to manipulate the DOM to add the modal itself and it will also need to clean up after itself when the modal closes
  
 * **a feature flag**, feature flag will have a state where it says wether something should be shown or not, it will need to get its state initially from somewhere like `localStorage` and/or over HTTP
 
-* **a cart**, a cart in an e-commerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as backend endpoint. 
+* **a cart**, a cart in an e-commerce app is something that most likely follows us everywhere in our app. We can sync a cart to `localStorage` as well as a backend endpoint. 
 
 ### Feature flag
-Let's try to sketch up our Hook and how it should be behaving:
+Let's try to sketch up our hook and how it should be behaving:
 
 ```js
 import { useState } from 'react';
@@ -249,6 +249,7 @@ function useFeatureFlag(flag) {
  return [enabled, setFlag]; 
 }
 ```
+Above 
 
 Now we have create our custom Hook, let's take it for a spin:
 ```
