@@ -135,15 +135,53 @@ It performs the same task as life cycle methods `componentDidMount`, `componentD
 
 Here is how we can use it:
 ```js
-const ProductList = () => {
-  const [products, setProducts] = useState([{ id: 1, name: 'Fortnite' }]);
- const [cart, setCart] = useState([]);
+import React, { useEffect, useState } from 'react';
 
- useEffect(async() => {
-   const products = await api.getProducts();
-   setProducts(products);
- })
+const products = [{ id: 1, name: "Fortnite" }, { id: 2, name: "Doom" }];
+let id = 2;
+
+const api = {
+  getProducts: () => {
+    return Promise.resolve(products);
+  },
+  getProduct: (id) => {
+    return Promise.resolve(products.find(p => p.id === id));
+  }
 }
+
+const ProductList = () => {
+  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState('');
+
+  async function fetchData() {
+    const products = await api.getProducts();
+    setProducts(products);
+  }
+
+  async function fetchProduct(productId) {
+    const p = await api.getProduct(productId);
+    setProduct(p.name);
+  }
+
+  useEffect(() => {
+    console.log('use effect');
+    fetchData();
+    fetchProduct(id);
+  }, [id]);
+
+  return (
+    <React.Fragment>
+      <h1>Async shop</h1>
+      <h2>Products</h2>
+      {products.map(p => <div>{p.name}</div>)}
+      <h3>Selected product</h3>
+      {product}
+    </React.Fragment>
+  );
+
+}
+
+export default ProductList;
 ```
 
 ### Life cycle
