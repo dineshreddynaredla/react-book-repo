@@ -138,7 +138,6 @@ Here is how we can use it:
 import React, { useEffect, useState } from 'react';
 
 const products = [{ id: 1, name: "Fortnite" }, { id: 2, name: "Doom" }];
-let id = 2;
 
 const api = {
   getProducts: () => {
@@ -152,6 +151,7 @@ const api = {
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState('');
+  const [selected, setSelected] = useState(2);
 
   async function fetchData() {
     const products = await api.getProducts();
@@ -166,8 +166,8 @@ const ProductList = () => {
   useEffect(() => {
     console.log('use effect');
     fetchData();
-    fetchProduct(id);
-  }, [id]);
+    fetchProduct(selected);
+  }, [selected]);
 
   return (
     <React.Fragment>
@@ -176,6 +176,7 @@ const ProductList = () => {
       {products.map(p => <div>{p.name}</div>)}
       <h3>Selected product</h3>
       {product}
+      <button onClick={() => setSelected(1)}>Change selected</button>
     </React.Fragment>
   );
 
