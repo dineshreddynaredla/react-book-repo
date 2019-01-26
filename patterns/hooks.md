@@ -106,26 +106,26 @@ Ok, we name the first value in the array `counter` and the second value `setCoun
 Just to ensure we understand how to use it fully let's create a few more states:
 
 ```js
-import { useState } from React;
+import React, { useState } from 'react';
 
 const ProductList = () => {
- const [products, setProducts] = useState([{ id: 1, name: 'Fortnite' }]);
- const [cart, setCart] = useState([]);
+  const [products] = useState([{ id: 1, name: 'Fortnite' }]);
+  const [cart, setCart] = useState([]);
 
- const addToCart = (p) => {
-   const newCartItem = { ...p};
-   setCart([...cart, newCartItem]);
- }
- 
- return (
-  <div>
-    <h2>Cart items</h2>
-    {cart.map(item => <div>{item.name}</div>)}
-    <h2>Products</h2>
-    {products.map(p => <div onClick={() => addToCart(p)}>{p.name}</div>)}
-  </div>
- )
+  const addToCart = (p) => {
+    const newCartItem = { ...p };
+    setCart([...cart, newCartItem]);
+  }
+  return (
+    <div>
+      <h2>Cart items</h2>
+      {cart.map(item => <div>{item.name}</div>)}
+      <h2>Products</h2>
+      {products.map(p => <div onClick={() => addToCart(p)}>{p.name}</div>)}
+    </div>
+  )
 }
+export default ProductList;
 ``` 
 Above we are creating the states `products` and `cart` and in doing so we also get their respective change funciton `setProducts` and `setCart`. We can see in the markup we invoke the method `addToCart()` if clicking on any of the items in our `products` list. This leads to the invocation of `setCart`, which leads to the selected product ot be added as a cart item in `cart`. This is a simple example but it really showcases the usage of `setState` hook.
 
