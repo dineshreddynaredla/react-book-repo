@@ -214,10 +214,10 @@ We see above that we are calling `getProducts` and `getProduct` on `api`  which 
 useEffect(() => {
     console.log('use effect');
     fetchData();
-    fetchProduct(id);
-}, [id]);
+    fetchProduct(selected);
+}, [selected]);
 ```
-The interesting part above is the second argument `[id]`. This is us looking at the `id` variable and let ourselves be notified of changes, if a change happens to id then we will run our `useEffect` function.
+The interesting part above is the second argument `[selected]`. This is us looking at the `selected` variable and let ourselves be notified of changes, if a change happens to `selected` then we will run our `useEffect` function.
 
 
 
