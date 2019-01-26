@@ -325,35 +325,49 @@ You could be creating things like:
 Let's try to sketch up our hook and how it should be behaving:
 
 ```js
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function useFeatureFlag(flag) {
-  const enabled = useState(Boolean(localStorage.getItem(flag)));
+  let flags = localStorage.getItem("flags");
+  flags = flags ? JSON.parse(flags) : null; 
 
-  const setFlag = (status) => {
+  const [enabled, setFlag] = useState(Boolean(flags ? flags[flag]: false));
+
+  const updateFlag = (status) => {
     const flags = localStorage.getItem('flags') | {};
-    
-    localStorage.setItem('flags', { ...flags, flag: status }
-   );
+    localStorage.setItem('flags', { ...flags, flag: status });
+    setFlag(status);
   }
-  
- return [enabled, setFlag]; 
+  return [enabled, updateFlag];
 }
+
+export default useFeatureFlag;
 ```
 Above 
 
 Now we have create our custom Hook, let's take it for a spin:
 ```
-const MyComponent = () => {
-  const [showExperiment1] = useFeatureFlag('experiment1');
-  
+import React from 'react';
+import useFeatureFlag from './flag';
+
+const Experimental = ({ flag }) => {
+  const [enabled] = useFeatureFlag(flag);
+  debugger;
   return (
-    <div>Always show this</div>
-    { showExperiment1 && 
-    <div>Show this if feature flag is on</div>
-    }
-  )
-}
+    <React.Fragment>
+      <div>Normal component</div>
+      {enabled &&
+        <div>Experimental</div>
+      }
+      
+    </React.Fragment>
+  );
+};
+
+export default Experimental;
+
+// using it
+<Experimental flag="experiment1">
 ```
 Now, as you saw in our custom hook we are exposing two things, the state and a function that lets us change the state. However in `MyComponent` we are only taking advantage of the `state`. Well, that makes kind of sense right? I mean the aim was to only show a certain region in a component if it was true. 
 
