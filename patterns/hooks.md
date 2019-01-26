@@ -185,13 +185,41 @@ export default ProductList;
 ```
 
 Ok, a lot of interesting things was happening here. Let's start by looking at our usage of `useEffect`:
-```
+```js
 useEffect(() => {
     console.log('use effect');
     fetchData();
     fetchProduct(id);
   }, [id]);
 ```
+What we are seeing above is us calling `fetchData` and `fetchProduct`. Both these methods calls methods marked by `async`. Why can't we just make the calling function in `useEffect` async, well that's a limitation of hooks unfortunately. 
+
+Looking at the definition of these two methods it looks like the following:
+
+```js
+async function fetchData() {
+  const products = await api.getProducts();
+  setProducts(products);
+}
+
+async function fetchProduct(productId) {
+  const p = await api.getProduct(productId);
+  setProduct(p.name);
+}
+```
+We see above that we are calling `getProducts` and `getProduct` on `api`  which both returns a Promise. After having received the resolved Promise, using `await` we call `setProducts` and `setProduct` that are functions we get from our `useState` hook. Ok, so this explains how `useEffect` in this case acts like `componentDidMount` but there is one more detail. Let's look at our `useEffect` function again:
+
+```
+useEffect(() => {
+    console.log('use effect');
+    fetchData();
+    fetchProduct(id);
+}, [id]);
+```
+The interesting part above is the second argument `[id]`. This is us looking at the `id` variable and let ourselves be notified of changes, if a change happens to id then we will run our `useEffect` function.
+
+
+
 
 
 ### Life cycle
