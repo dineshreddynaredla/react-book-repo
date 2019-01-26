@@ -219,7 +219,7 @@ useEffect(() => {
 ```
 The interesting part above is the second argument `[selected]`. This is us looking at the `selected` variable and let ourselves be notified of changes, if a change happens to `selected` then we will run our `useEffect` function.
 
-
+Now, try hitting the bottom button and you will see `setSelected` being invoked which trigger `useEffect` because we are watching it.
 
 
 
