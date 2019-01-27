@@ -364,9 +364,9 @@ export default TestComponent;
 // using it
 <TestComponent flag="experiment1">
 ```
-Now, as you saw in our custom hook we are exposing two things, the state and a function that lets us change the state. However in `MyComponent` we are only taking advantage of the `state`. Well, that makes kind of sense right? I mean the aim was to only show a certain region in a component if it was true. 
+We said earlier we weren't interested in changing the value exposed by `useFeatureFlag`. To control our feature flags we opt for creating a specific Admin page. We count on the Admin page to be on a specific page and the component with the feature flag on another page. Result of that is were we to navigate between the two pages then we can guarantee that the feature flag component reads from `localStorage`.
 
-The million dollar question is when would we use `setFlag` to change the value? Glad you asked ;) Imagine you have an admin page. On that admin page it would be neat if we could list all the flags and toggle them any way we want to. Let's write such a component:
+Imagine you have an admin page. On that admin page it would be neat if we could list all the flags and toggle them any way we want to. Let's write such a component:
 
 ```js
 import React, { useState } from 'react';
@@ -403,7 +403,7 @@ const FlagsPage = () => {
 
 export default FlagsPage;
 ```
-What we are doing above is to read out the flags from `localStorage` and then we show them all in the `render` method. While rendering them out, flag by flag, we also hook-up ( I know we are talking about hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us change a specific flag. Inside of `toggleFlag` we not only set the new flag value but we also ensure our `flags` have the latest updated value. 
+What we are doing above is to read out the flags from `localStorage` and then we render them all out. While rendering them out, flag by flag, we also hook-up ( I know we are talking about hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us change a specific flag. Inside of `toggleFlag` we not only set the new flag value but we also ensure our `flags` have the latest updated value. 
 
 It should also be said that us creating `useFlags` hook have made the code in `FlagsPage` quite simple, so hooks are good at cleaning up a bit too.
 
