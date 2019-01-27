@@ -413,7 +413,8 @@ In this article we have tried to explain the background and the reason hooks whe
 We have learned the following, hopefully;):
 - **useState**, is a Hook we can use to persist state in a functional component
 - **useEffect** is also a Hook but for side effects
-- we can use one or both of the mentioned hook types and create really cool and reusable functionality, so go out there, be awesome and create your own hooks.
+
+we can use one or both of the mentioned hook types and create really cool and reusable functionality, so go out there, be awesome and create your own hooks.
 
 ### Further reading
 - [Hooks documentation](https://reactjs.org/docs/hooks-overview.html)
