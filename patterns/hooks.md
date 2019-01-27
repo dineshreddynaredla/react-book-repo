@@ -338,7 +338,7 @@ function useFeatureFlag(flag) {
 
 export default useFeatureFlag;
 ```
-Above we have created a hook called `useFeatureFlag`. This reads its value from `localStorage` and it uses `useState` to set up our hook state.
+Above we have created a hook called `useFeatureFlag`. This reads its value from `localStorage` and it uses `useState` to set up our hook state. The reason for us not destructuring out a set method in the hook is that we don't want to change this value unless we reread the whole page, at which point we will read from `localStorage` anew.
 
 Now we have create our custom Hook, let's take it for a spin:
 ```
