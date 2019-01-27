@@ -338,7 +338,7 @@ function useFeatureFlag(flag) {
 
 export default useFeatureFlag;
 ```
-Above we have created a hook called `useFeatureFlag`. This reads its value from `localStorage` and it uses `useState` to set up our hook state. Then we use `updateFlag()` method to 
+Above we have created a hook called `useFeatureFlag`. This reads its value from `localStorage` and it uses `useState` to set up our hook state.
 
 Now we have create our custom Hook, let's take it for a spin:
 ```
