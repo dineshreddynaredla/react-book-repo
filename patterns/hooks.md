@@ -374,40 +374,51 @@ Now, as you saw in our custom hook we are exposing two things, the state and a f
 The million dollar question is when would we use `setFlag` to change the value? Glad you asked ;) Imagine you have an admin page. On that admin page it would be neat if we could list all the flags and toggle them any way we want to. Let's write such a component:
 
 ```js
+import React, { useState } from 'react';
+
 const useFlags = () => {
-  let flags = localStorage.getItem('flags') | {};
-  const updateFlags = (flags) => {
-    flags = localStorage.getItem('flags') | {};
+  let flags = localStorage.getItem("flags");
+  flags = flags ? JSON.parse(flags) : {}; 
+
+  const [ flagsValue, setFlagsValue ] = useState(flags);
+
+  const updateFlags = (f) => {
+    localStorage.setItem("flags", JSON.stringify(f));
+    setFlagsValue(f);
   }
-  
-  return [flags, updateFlags];   
+
+  return [flagsValue, updateFlags];
 }
 
-const AdminPage = () => {
-  const [flags, updateFlags] = useFlags();
-  
+const FlagsPage = () => {
+  const [flags, setFlags] = useFlags();
+
   const toggleFlag = (f) => {
-    const [f, setFlag] = useFeatureFlag(flag);
-    setFlag(!f); 
-    updateFlags();  
+    const currentValue = Boolean(flags[f]);
+    flags[f] = !currentValue;
+    setFlags(flags)
   }
-  
   return (
     <React.Fragment>
-    {Object.keys(flags).map(key => <div><button onClick={() => toggleFlag(flag)}>{flag}</button></div>)}
+      <h1>Flags page</h1>
+      {Object.keys(flags).filter(key => flags[key]).map(flag => <div><button onClick={() => toggleFlag(flag)}>{flag}</button></div>)}
     </React.Fragment>
   )
 }
+
+export default FlagsPage;
 ```
-What we are doing above is to read out the flags from `localStorage` and then we show them all in the `render` method. While rendering them out, flag by flag, we also hook-up ( I know we are talking about Hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us change a specific flag. Inside of `toggleFlag` we not only set the new flag value but we also ensure our `flags` have the latest updated value. 
+What we are doing above is to read out the flags from `localStorage` and then we show them all in the `render` method. While rendering them out, flag by flag, we also hook-up ( I know we are talking about hooks here but no pun intended, really :) ) a method on the `onClick`. That method is `toggleFlag` that let's us change a specific flag. Inside of `toggleFlag` we not only set the new flag value but we also ensure our `flags` have the latest updated value. 
+
+It should also be said that us creating `useFlags` hook have made the code in `FlagsPage` quite simple, so hooks are good at cleaning up a bit too.
 
 ## Summary
 In this article we have tried to explain the background and the reason Hooks where created and what problems it was looking to address and hopefully fix.
 
 We have learned the following, hopefully;):
-- useState, is a Hook we can use to persist state in a functional component
-- useEffect is also a Hook but for side effects
-- we can use one or both of the mentioned Hook types and create really cool and reusable functionality, so go out there, be awesome and create your own hooks.
+- **useState**, is a Hook we can use to persist state in a functional component
+- **useEffect** is also a Hook but for side effects
+- we can use one or both of the mentioned hook types and create really cool and reusable functionality, so go out there, be awesome and create your own hooks.
 
 ### Further reading
 - [Hooks documentation](https://reactjs.org/docs/hooks-overview.html)
