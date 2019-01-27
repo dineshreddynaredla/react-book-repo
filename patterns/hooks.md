@@ -331,19 +331,14 @@ function useFeatureFlag(flag) {
   let flags = localStorage.getItem("flags");
   flags = flags ? JSON.parse(flags) : null; 
 
-  const [enabled, setFlag] = useState(Boolean(flags ? flags[flag]: false));
+  const [enabled] = useState(Boolean(flags ? flags[flag]: false));
 
-  const updateFlag = (status) => {
-    const flags = localStorage.getItem('flags') | {};
-    localStorage.setItem('flags', { ...flags, flag: status });
-    setFlag(status);
-  }
-  return [enabled, updateFlag];
+  return [enabled];
 }
 
 export default useFeatureFlag;
 ```
-Above 
+Above we have created a hook called `useFeatureFlag`. This reads its value from `localStorage` and it uses `useState` to set up our hook state. Then we use `updateFlag()` method to 
 
 Now we have create our custom Hook, let's take it for a spin:
 ```
