@@ -408,7 +408,7 @@ What we are doing above is to read out the flags from `localStorage` and then we
 It should also be said that us creating `useFlags` hook have made the code in `FlagsPage` quite simple, so hooks are good at cleaning up a bit too.
 
 ## Summary
-In this article we have tried to explain the background and the reason Hooks where created and what problems it was looking to address and hopefully fix.
+In this article we have tried to explain the background and the reason hooks where created and what problems it was looking to address and hopefully fix.
 
 We have learned the following, hopefully;):
 - **useState**, is a Hook we can use to persist state in a functional component
