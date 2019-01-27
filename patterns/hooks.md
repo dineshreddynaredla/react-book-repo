@@ -345,7 +345,7 @@ Now we have create our custom Hook, let's take it for a spin:
 import React from 'react';
 import useFeatureFlag from './flag';
 
-const Experimental = ({ flag }) => {
+const TestComponent = ({ flag }) => {
   const [enabled] = useFeatureFlag(flag);
   debugger;
   return (
@@ -359,10 +359,10 @@ const Experimental = ({ flag }) => {
   );
 };
 
-export default Experimental;
+export default TestComponent;
 
 // using it
-<Experimental flag="experiment1">
+<TestComponent flag="experiment1">
 ```
 Now, as you saw in our custom hook we are exposing two things, the state and a function that lets us change the state. However in `MyComponent` we are only taking advantage of the `state`. Well, that makes kind of sense right? I mean the aim was to only show a certain region in a component if it was true. 
 
