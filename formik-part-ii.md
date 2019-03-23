@@ -1,3 +1,5 @@
+![](https://thepracticaldev.s3.amazonaws.com/i/8e17rqk4bamdm1spw90m.jpg)
+
 Follow me on [Twitter](https://twitter.com/chris_noring), happy to take your suggestions on topics or improvements /Chris
 
 > This is the continuation of our first part on Formik, the amazing Forms library for React
