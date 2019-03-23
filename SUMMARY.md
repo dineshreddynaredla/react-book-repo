@@ -16,6 +16,7 @@
 * [Dealing with input elements](dealing-with-input-elements.md)
 * [Forms](forms.md)
 * [Forms II - validation](forms-ii-validation.md)
+* [Formik - part II](formik-part-ii.md)
 * [AJAX /HTTP](ajax-http.md)
 
 ## STYLING
